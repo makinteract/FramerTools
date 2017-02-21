@@ -1,0 +1,665 @@
+# Your snippets
+#
+# Atom snippets allow you to enter a simple prefix in the editor and hit tab to
+# expand the prefix into a larger code block with templated values.
+#
+# You can create a new snippet in this file by typing "snip" and then hitting
+# tab.
+#
+# An example CoffeeScript snippet to expand log to console.log:
+#
+
+# This file uses CoffeeScript Object Notation (CSON).
+# If you are unfamiliar with CSON, you can read more about it here:
+# https://github.com/bevry/cson#what-is-cson
+
+'.source.coffee':
+    'Framer: new Layer':
+        'prefix': 'new Layer'
+        'body': """
+                layerA = new Layer
+                    x: $1
+                    y: $2
+                    width: $3
+                    height: $4
+                    backgroundColor: "rgb(12, 105, 215)"
+                    borderRadius: $5
+                    """
+
+    'Framer: explore':
+        'prefix': 'explore'
+        'body': """
+                explore ($1)
+                        """
+
+    'Framer: new Animation':
+        'prefix': 'new Animation'
+        'body': """
+                a = new Animation
+                    layer: $1
+                    properties:
+                      rotation: $2
+                      scale: $3
+                    options:
+                      curve: "spring"
+                    """
+
+
+    'Framer: Click':
+        'prefix': 'Click'
+        'body': 'layerA.onClick ->'
+
+
+    'Framer: Keydown':
+        'prefix': 'Keydown'
+        'body': """
+                document.addEventListener "keydown", (event) ->
+                	keyCode = event.which
+                	if keyCode is 49
+                		print "1"
+                	if keyCode is 50
+                		print "2"
+                	if keyCode is 51
+                		print "3"
+                        """
+
+
+    'Framer: onTouchEnd':
+        'prefix': 'onTouchEnd'
+        'body': """
+                layerA.onTouchEnd ->
+                	print "Touch end"
+                """
+
+
+    'Framer: onTouchMove':
+        'prefix': 'onTouchMove'
+        'body': """
+                layerA.onTouchMove ->
+                	print "Touch move"
+                """
+
+
+    'Framer: onTouchStart':
+        'prefix': 'onTouchStart'
+        'body': """
+                layerA.onTouchStart ->
+                	print "Touch start"
+                                """
+
+
+    'Framer: Dimensions':
+        'prefix': 'Dimensions'
+        'body': """
+                layerA.animate
+                	properties:
+                		width: 400
+                		height: 400
+                	curve: "spring(280,30,0)"
+                                    """
+
+
+    'Framer: Opacity':
+        'prefix': 'Opacity'
+        'body': """
+                layerA.animate
+                	properties:
+                		opacity: 0
+                	curve: "spring(280,30,0)"
+                        """
+
+
+    'Framer: Position':
+        'prefix': 'Position'
+        'body': """
+                layerA.animate
+                	properties:
+                		x: 0
+                		y: 0
+                	curve: "spring(280,30,0)"
+                        """
+
+
+    'Framer: Repeating start':
+        'prefix': 'Repeating start'
+        'body': """
+                animationA = new Animation
+                	layer: layerA
+                	properties:
+                		scale: 0
+                	curve: "spring(100,30,0)"
+
+                animationB = new Animation
+                	layer: layerA
+                	properties:
+                		scale: 1
+                	curve: "spring(100,30,0)"
+
+                layerA.onClick ->
+                	animationA.start()
+
+                animationA.on(Events.AnimationEnd, animationB.start)
+                animationB.on(Events.AnimationEnd, animationA.start)
+                        """
+
+
+    'Framer: Repeating halt':
+        'prefix': 'Repeating halt'
+        'body': """
+                layerB.onClick ->
+                	animationA.stop()
+                	animationB.stop()
+                        """
+
+
+    'Framer: Rotation':
+        'prefix': 'Rotation'
+        'body': """
+                layerA.animate
+                	properties:
+                		rotation: 180
+                	curve: "spring(280,30,0)"
+                        """
+
+
+    'Framer: Scale':
+        'prefix': 'Scale'
+        'body': """
+                layerA.animate
+                	properties:
+                		scale: 0
+                	curve: "spring(280,30,0)"
+                        """
+
+
+    'Framer: Slow down animations':
+        'prefix': 'Slow down animations'
+        'body': """
+                ## Slow down animations
+                Framer.Loop.delta = 1 / 240
+                        """
+
+
+    'Framer: Trigger on end (casual)':
+        'prefix': 'Trigger on end (casual)'
+        'body': """
+                layerA.onClick ->
+                	animationA = layerA.animate
+                		properties:
+                			scale: 0
+                		curve: "spring(100,30,0)"
+                	animationA.on Events.AnimationEnd, ->
+                		layerB.animate
+                			properties:
+                				scale: 0
+                			curve: "spring(100,30,0)"
+                        """
+
+
+    'Framer: Trigger on end (formal)':
+        'prefix': 'Trigger on end (formal)'
+        'body': """
+                animationA = new Animation
+                	layer: layerA
+                	properties:
+                		scale: 0
+                	curve: "spring(100,30,0)"
+
+                animationB = new Animation
+                	layer: layerB
+                	properties:
+                		scale: 0
+                	curve: "spring(100,30,0)"
+
+                layerA.onClick ->
+                	animationA.start()
+
+                animationA.on Events.AnimationEnd, ->
+                    animationB.start()
+                        """
+
+
+    'Framer: With delay':
+        'prefix': 'With delay'
+        'body': """
+                layerA.animate
+                	properties:
+                		opacity: 0
+                	curve: "spring(280,30,0)"
+                	delay: 1
+                        """
+
+
+    'Framer: Draggable':
+        'prefix': 'Draggable'
+        'body': """
+                layerA.draggable.enabled = true
+                                """
+
+
+    'Framer: DragEnd':
+        'prefix': 'DragEnd'
+        'body': """
+                layerA.on Events.DragEnd, ->
+                                """
+
+
+    'Framer: DragMove':
+        'prefix': 'DragMove'
+        'body': """
+                layerA.on Events.DragMove, ->
+                	print layerA.point
+                                """
+
+
+    'Framer: DragStart':
+        'prefix': 'DragStart'
+        'body': """
+                layerA.on Events.DragStart, ->
+                                """
+
+
+    'Framer: FlowComponent':
+        'prefix': 'FlowComponent'
+        'body': """
+                flow = new FlowComponent
+                flow.showNext(layerA)
+                        """
+
+
+    'Framer: showOverlayTop':
+        'prefix': 'showOverlayTop'
+        'body': """
+                flow.showOverlayTop(layerA)
+                        """
+
+
+    'Framer: footer':
+        'prefix': 'footer'
+        'body': """
+                flow.footer = layerA
+                        """
+
+
+    'Framer: header':
+        'prefix': 'header'
+        'body': """
+                flow.header = layerA
+                        """
+
+
+    'Framer: showNext':
+        'prefix': 'showNext'
+        'body': """
+                flow.showNext(layerA, animate: false)
+                        """
+
+
+    'Framer: showOverlayCenter':
+        'prefix': 'showOverlayCenter'
+        'body': """
+                flow.showOverlayCenter(layerA)
+                        """
+
+
+    'Framer: showOverlayRight':
+        'prefix': 'showOverlayRight'
+        'body': """
+                flow.showOverlayRight(layerA)
+                        """
+
+
+    'Framer: showOverlayLeft':
+        'prefix': 'showOverlayLeft'
+        'body': """
+                $flow.showOverlayLeft(layerA)
+                        """
+
+
+    'Framer: showPrevious':
+        'prefix': 'showPrevious'
+        'body': """
+                flow.showPrevious(layerA)
+                        """
+
+
+    'Framer: destroy':
+        'prefix': 'destroy'
+        'body': """
+                layerA.destroy()
+                        """
+
+
+    'Framer: Sublayer':
+        'prefix': 'sublayer'
+        'body': """
+                layerA = new Layer
+
+                layerB = new Layer
+                	parent: layerA
+                        """
+
+
+    'Framer: Video':
+        'prefix': 'video'
+        'body': """
+                video = new VideoLayer
+                	width: 1920
+                	height: 1080
+                	video: "filename.mov"
+
+                video.player.play()
+                        """
+
+
+    'Framer: Device Check':
+        'prefix': 'device check'
+        'body': """
+                desktop = Utils.isDesktop()
+                phone = Utils.isPhone()
+                tablet = Utils.isTablet()
+
+                if desktop == true
+                	print "This is a desktop."
+                if phone == true
+                	print "This is a phone."
+                if tablet == true
+                	print "This is a tablet."
+                        """
+
+
+    'Framer: Utils.delay':
+        'prefix': 'Utils.delay'
+        'body': """
+                Utils.delay 2.5, ->
+                	print "Hello World!"
+                        """
+
+
+    'Framer: Utils.interval':
+        'prefix': 'Utils.interval'
+        'body': """
+                Utils.interval 1, ->
+                	print "Hello World!"
+                        """
+
+
+
+    'Framer: Utils.domLoadJSON':
+        'prefix': 'Utils.domLoadJSON'
+        'body': """
+                Utils.domLoadJSON "https://api.github.com/repos/koenbok/Framer", (error, response) ->
+                	print response.name
+                	print response.url
+                	print response.description
+                        """
+
+
+
+    'Framer: Setup project':
+        'prefix': 'setup'
+        'body': """
+                # define objects
+                layerA = new Layer
+                	x: 275
+                	y: 567
+                	backgroundColor: "rgba(50,102,255,1)"
+
+                # define initial values
+                layerA.opacity = 0.5
+
+                # define springs
+                slowSpring = "spring(100,30,0)"
+
+                # define animations
+                grow = (layer) ->
+                	layer.animate
+                		properties:
+                			scale: 3
+                		curve: slowSpring
+
+                # define user actions
+                layerA.onClick ->
+                	grow(this)
+                        """
+
+
+
+    'Framer: scroll.contentInset':
+        'prefix': 'scroll.contentInset'
+        'body': """
+                scroll.contentInset =
+                	top: 100
+                	bottom: 100
+                	right: 0
+                	left: 0
+                        """
+
+
+
+    'Framer: scroll.directionLock':
+        'prefix': 'scroll.directionLock'
+        'body': """
+                scroll.directionLock = true
+                        """
+
+
+
+    'Framer: scroll.mouseWheelEnabled':
+        'prefix': 'scroll.mouseWheelEnabled'
+        'body': """
+                scroll.mouseWheelEnabled = true
+                        """
+
+
+
+    'Framer: scroll.onMove':
+        'prefix': 'scroll.onMove'
+        'body': """
+                scroll.onMove ->
+                	print scroll.scrollY
+                        """
+
+
+
+    'Framer: ScrollComponent':
+        'prefix': 'ScrollComponent'
+        'body': """
+                scroll = ScrollComponent.wrap(layerA)
+                scroll.scrollHorizontal = false
+                        """
+
+
+
+    'Framer: scroll.velocity':
+        'prefix': 'scroll.velocity'
+        'body': """
+                scroll.onMove ->
+                scroll.on Events.Scroll, ->
+                	print scroll.velocity
+                        """
+
+
+
+    'Framer: animationOptions':
+        'prefix': 'animationOptions'
+        'body': """
+                layerA.animationOptions =
+                	curve: "spring(250,25,0)"
+                        """
+
+
+
+    'Framer: stateCycle':
+        'prefix': 'stateCycle'
+        'body': """
+                layerA.stateCycle(["a", "b"])
+                        """
+
+
+
+    'Framer: Define states':
+        'prefix': 'states: difine'
+        'body': """
+                layerA.states.a =
+                	width: 400
+                	height: 400
+
+                layerA.states.b =
+                	width: 200
+                	height: 200
+                        """
+
+
+
+    'Framer: If current state name':
+        'prefix': 'states: current state name'
+        'body': """
+                if layerA.states.current.name == "a"
+                	layerB.animate
+                		properties:
+                			opacity: 1
+                		curve: "spring(270,24,10)"
+                        """
+
+
+
+    'Framer: backgroundColor':
+        'prefix': 'backgroundColor'
+        'body': """
+                layerA.backgroundColor = "#eee"
+                        """
+
+
+
+    'Framer: blur':
+        'prefix': 'blur'
+        'body': """
+                layerA.blur = 10
+                        """
+
+
+
+    'Framer: bringToFront':
+        'prefix': 'bringToFront'
+        'body': """
+                layerA.bringToFront()
+                        """
+
+
+
+    'Framer: center':
+        'prefix': 'center'
+        'body': """
+                layerA.center()
+                        """
+
+
+
+    'Framer: Border':
+        'prefix': 'border'
+        'body': """
+                layerA.borderWidth = 10
+                layerA.borderColor = "white"
+                        """
+
+
+
+    'Framer: Circle':
+        'prefix': 'circle'
+        'body': """
+                layerA.borderRadius = layerA.width/2
+                        """
+
+
+
+    'Framer: image':
+        'prefix': 'image'
+        'body': """
+                layerA.image = "https://pbs.twimg.com/profile_images/574269758595407872/DiT2a36E.jpeg"
+
+                        """
+
+
+
+    'Framer: name':
+        'prefix': 'name'
+        'body': """
+                layerA.name = "Layer Name"
+                        """
+
+
+
+    'Framer: placeBefore':
+        'prefix': 'placeBefore'
+        'body': """
+                layerA.placeBefore(layerB)
+                        """
+
+
+
+    'Framer: html':
+        'prefix': 'html'
+        'body': """
+                layerA.html = "Hello World!"
+                        """
+
+
+
+    'Framer: opacity':
+        'prefix': 'opacity'
+        'body': """
+                layerA.opacity = 0
+                        """
+
+
+
+    'Framer: placeBehind':
+        'prefix': 'placeBehind'
+        'body': """
+                layerA.placeBehind(layerB)
+                        """
+
+
+
+    'Framer: saturate':
+        'prefix': 'saturate'
+        'body': """
+                layerA.saturate = 0
+                        """
+
+
+
+    'Framer: sendToBack':
+        'prefix': 'sendToBack'
+        'body': """
+                layerA.sendToBack()
+                        """
+
+
+
+    'Framer: Shadow':
+        'prefix': 'shadow'
+        'body': """
+                layerA.shadowY = 10
+                layerA.shadowBlur = 40
+                layerA.shadowColor = "rgba(0,0,0,0.3)"
+                        """
+
+
+
+    'Framer: style':
+        'prefix': 'style'
+        'body': """
+                layerA.style =
+                	"background-color": "red",
+                	"borderRadius": "100px"
+                        """
+
+
+    'Framer: BackgroundLayer':
+        'prefix': 'BackgroundLayer'
+        'body': """
+                layerB = new BackgroundLayer
+                    backgroundColor: "white"
+                        """
