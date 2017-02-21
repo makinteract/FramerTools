@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="FramerCompanion:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/FramerCompanion_jar</output-path>
+    <root id="archive" name="FramerCompanion.jar">
+      <element id="module-output" name="FramerCompanion" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/commons-io/commons-io-2.5.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

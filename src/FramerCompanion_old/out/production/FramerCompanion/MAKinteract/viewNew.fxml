@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="viewNew" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MAKinteract.NewController">
+   <children>
+      <VBox prefHeight="197.0" prefWidth="362.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="25.0">
+         <children>
+            <HBox alignment="BOTTOM_LEFT" prefHeight="45.0" prefWidth="330.0">
+               <children>
+                  <Label text="Name">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="prjName" prefHeight="27.0" prefWidth="272.0" text="DefaultName" />
+               </children>
+            </HBox>
+            <HBox alignment="BOTTOM_LEFT" prefHeight="45.0" prefWidth="330.0">
+               <children>
+                  <Label text="Location">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="prjLocation" prefHeight="27.0" prefWidth="184.0">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Button mnemonicParsing="false" onAction="#browse" text="Browse" />
+               </children>
+            </HBox>
+            <HBox alignment="BOTTOM_CENTER" prefHeight="45.0" prefWidth="330.0">
+               <children>
+                  <CheckBox mnemonicParsing="false" onAction="#toggleTemplateInclusion" text="Example code">
+                     <HBox.margin>
+                        <Insets right="70.0" />
+                     </HBox.margin>
+                  </CheckBox>
+                  <Button fx:id="initButton" mnemonicParsing="false" onAction="#initializeProject" prefHeight="27.0" prefWidth="96.0" text="Initialize">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+      <Label fx:id="footer" alignment="CENTER" contentDisplay="CENTER" layoutY="214.0" maxWidth="1.7976931348623157E308" prefWidth="400.0" text="Ready" textAlignment="CENTER" />
+   </children>
+</AnchorPane>

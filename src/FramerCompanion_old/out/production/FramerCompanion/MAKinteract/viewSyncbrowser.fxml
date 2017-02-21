@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="viewBrowser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MAKinteract.BrowserSyncController">
+   <children>
+      <VBox layoutX="38.0" layoutY="39.0" prefHeight="63.0" prefWidth="362.0">
+         <children>
+            <HBox alignment="BOTTOM_LEFT" prefHeight="45.0" prefWidth="330.0">
+               <children>
+                  <Label text="Location">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="syncLocation" prefHeight="27.0" prefWidth="184.0">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Button mnemonicParsing="false" onAction="#browse" text="Browse" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Button fx:id="syncButton" layoutX="150.0" layoutY="102.0" mnemonicParsing="false" onAction="#sync" text="Start sync" />
+      <VBox layoutX="91.0" layoutY="150.0" prefHeight="63.0" prefWidth="218.0">
+         <children>
+            <HBox prefHeight="27.0" prefWidth="200.0">
+               <children>
+                  <Label prefHeight="24.0" prefWidth="114.0" text="Address" />
+                  <Label fx:id="address" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="152.0" text="0.0.0.0" textAlignment="RIGHT" textFill="RED">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="27.0" prefWidth="200.0">
+               <children>
+                  <Label prefHeight="24.0" prefWidth="114.0" text="Port" />
+                  <Label fx:id="port" alignment="CENTER_RIGHT" prefHeight="27.0" prefWidth="124.0" text="0" textAlignment="RIGHT" textFill="RED" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

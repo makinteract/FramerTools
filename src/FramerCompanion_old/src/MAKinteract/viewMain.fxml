@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Accordion expandedPane="$defaultPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="290.0" prefWidth="460.0">
+        <panes>
+          <TitledPane fx:id="defaultPane" text="New from template">
+            <content>
+              <fx:include fx:id="viewNew" source="viewNew.fxml" />
+            </content>
+          </TitledPane>
+          <TitledPane expanded="false" text="Play app">
+            <content>
+                <fx:include fx:id="viewBrowser" source="viewSyncbrowser.fxml" />
+            </content>
+          </TitledPane>
+        </panes>
+      </Accordion>
+   </children>
+</VBox>
