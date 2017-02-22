@@ -5,4 +5,4 @@ layerA.animate
 	properties:
 		rotation: 180
 	curve: "spring(280,30,0)"
-	"""
+"""

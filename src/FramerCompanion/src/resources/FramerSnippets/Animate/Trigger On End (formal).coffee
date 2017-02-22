@@ -18,4 +18,4 @@ layerA.onClick ->
 
 animationA.on Events.AnimationEnd, ->
     animationB.start()
-	"""
+"""

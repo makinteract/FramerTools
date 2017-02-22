@@ -11,4 +11,4 @@ layerA.onClick ->
 			properties:
 				scale: 0
 			curve: "spring(100,30,0)"
-	"""
+"""
