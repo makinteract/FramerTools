@@ -4,4 +4,4 @@ plugin.run = (contents, options) ->
 layerB.onClick ->
 	animationA.stop()
 	animationB.stop()
-	"""
+"""

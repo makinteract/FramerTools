@@ -6,4 +6,4 @@ layerA.animate
 		x: 0
 		y: 0
 	curve: "spring(280,30,0)"
-	"""
+"""
