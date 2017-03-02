@@ -14,652 +14,2753 @@
 # https://github.com/bevry/cson#what-is-cson
 
 '.source.coffee':
-    'Framer: new Layer':
-        'prefix': 'new Layer'
-        'body': """
-                layerA = new Layer
-                    x: $1
-                    y: $2
-                    width: $3
-                    height: $4
-                    backgroundColor: "rgb(12, 105, 215)"
-                    borderRadius: $5
-                    """
-
-    'Framer: explore':
-        'prefix': 'explore'
-        'body': """
-                explore ($1)
-                        """
-
-    'Framer: new Animation':
-        'prefix': 'new Animation'
-        'body': """
-                a = new Animation
-                    layer: $1
-                    properties:
-                      rotation: $2
-                      scale: $3
-                    options:
-                      curve: "spring"
-                    """
-
-
-    'Framer: Click':
-        'prefix': 'Click'
-        'body': 'layerA.onClick ->'
-
-
-    'Framer: Keydown':
-        'prefix': 'Keydown'
-        'body': """
-                document.addEventListener "keydown", (event) ->
-                	keyCode = event.which
-                	if keyCode is 49
-                		print "1"
-                	if keyCode is 50
-                		print "2"
-                	if keyCode is 51
-                		print "3"
-                        """
-
-
-    'Framer: onTouchEnd':
-        'prefix': 'onTouchEnd'
-        'body': """
-                layerA.onTouchEnd ->
-                	print "Touch end"
-                """
-
-
-    'Framer: onTouchMove':
-        'prefix': 'onTouchMove'
-        'body': """
-                layerA.onTouchMove ->
-                	print "Touch move"
-                """
-
-
-    'Framer: onTouchStart':
-        'prefix': 'onTouchStart'
-        'body': """
-                layerA.onTouchStart ->
-                	print "Touch start"
+        'Framer: Align.bottom($1)':
+                'prefix': 'Align.bottom($1)'
+                'body': """
+                        Align.bottom($1)
                                 """
-
-
-    'Framer: Dimensions':
-        'prefix': 'Dimensions'
-        'body': """
-                layerA.animate
-                	properties:
-                		width: 400
-                		height: 400
-                	curve: "spring(280,30,0)"
-                                    """
-
-
-    'Framer: Opacity':
-        'prefix': 'Opacity'
-        'body': """
-                layerA.animate
-                	properties:
-                		opacity: 0
-                	curve: "spring(280,30,0)"
-                        """
-
-
-    'Framer: Position':
-        'prefix': 'Position'
-        'body': """
-                layerA.animate
-                	properties:
-                		x: 0
-                		y: 0
-                	curve: "spring(280,30,0)"
-                        """
-
-
-    'Framer: Repeating start':
-        'prefix': 'Repeating start'
-        'body': """
-                animationA = new Animation
-                	layer: layerA
-                	properties:
-                		scale: 0
-                	curve: "spring(100,30,0)"
-
-                animationB = new Animation
-                	layer: layerA
-                	properties:
-                		scale: 1
-                	curve: "spring(100,30,0)"
-
-                layerA.onClick ->
-                	animationA.start()
-
-                animationA.on(Events.AnimationEnd, animationB.start)
-                animationB.on(Events.AnimationEnd, animationA.start)
-                        """
-
-
-    'Framer: Repeating halt':
-        'prefix': 'Repeating halt'
-        'body': """
-                layerB.onClick ->
-                	animationA.stop()
-                	animationB.stop()
-                        """
-
-
-    'Framer: Rotation':
-        'prefix': 'Rotation'
-        'body': """
-                layerA.animate
-                	properties:
-                		rotation: 180
-                	curve: "spring(280,30,0)"
-                        """
-
-
-    'Framer: Scale':
-        'prefix': 'Scale'
-        'body': """
-                layerA.animate
-                	properties:
-                		scale: 0
-                	curve: "spring(280,30,0)"
-                        """
-
-
-    'Framer: Slow down animations':
-        'prefix': 'Slow down animations'
-        'body': """
-                ## Slow down animations
-                Framer.Loop.delta = 1 / 240
-                        """
-
-
-    'Framer: Trigger on end (casual)':
-        'prefix': 'Trigger on end (casual)'
-        'body': """
-                layerA.onClick ->
-                	animationA = layerA.animate
-                		properties:
-                			scale: 0
-                		curve: "spring(100,30,0)"
-                	animationA.on Events.AnimationEnd, ->
-                		layerB.animate
-                			properties:
-                				scale: 0
-                			curve: "spring(100,30,0)"
-                        """
-
-
-    'Framer: Trigger on end (formal)':
-        'prefix': 'Trigger on end (formal)'
-        'body': """
-                animationA = new Animation
-                	layer: layerA
-                	properties:
-                		scale: 0
-                	curve: "spring(100,30,0)"
-
-                animationB = new Animation
-                	layer: layerB
-                	properties:
-                		scale: 0
-                	curve: "spring(100,30,0)"
-
-                layerA.onClick ->
-                	animationA.start()
-
-                animationA.on Events.AnimationEnd, ->
-                    animationB.start()
-                        """
-
-
-    'Framer: With delay':
-        'prefix': 'With delay'
-        'body': """
-                layerA.animate
-                	properties:
-                		opacity: 0
-                	curve: "spring(280,30,0)"
-                	delay: 1
-                        """
-
-
-    'Framer: Draggable':
-        'prefix': 'Draggable'
-        'body': """
-                layerA.draggable.enabled = true
+        'Framer: Align.center($1)':
+                'prefix': 'Align.center($1)'
+                'body': """
+                        Align.center($1)
                                 """
-
-
-    'Framer: DragEnd':
-        'prefix': 'DragEnd'
-        'body': """
-                layerA.on Events.DragEnd, ->
+        'Framer: Align.left($1)':
+                'prefix': 'Align.left($1)'
+                'body': """
+                        Align.left($1)
                                 """
-
-
-    'Framer: DragMove':
-        'prefix': 'DragMove'
-        'body': """
-                layerA.on Events.DragMove, ->
-                	print layerA.point
+        'Framer: Align.right($1)':
+                'prefix': 'Align.right($1)'
+                'body': """
+                        Align.right($1)
                                 """
-
-
-    'Framer: DragStart':
-        'prefix': 'DragStart'
-        'body': """
-                layerA.on Events.DragStart, ->
+        'Framer: Align.top($1)':
+                'prefix': 'Align.top($1)'
+                'body': """
+                        Align.top($1)
                                 """
-
-
-    'Framer: FlowComponent':
-        'prefix': 'FlowComponent'
-        'body': """
-                flow = new FlowComponent
-                flow.showNext(layerA)
-                        """
-
-
-    'Framer: showOverlayTop':
-        'prefix': 'showOverlayTop'
-        'body': """
-                flow.showOverlayTop(layerA)
-                        """
-
-
-    'Framer: footer':
-        'prefix': 'footer'
-        'body': """
-                flow.footer = layerA
-                        """
-
-
-    'Framer: header':
-        'prefix': 'header'
-        'body': """
-                flow.header = layerA
-                        """
-
-
-    'Framer: showNext':
-        'prefix': 'showNext'
-        'body': """
-                flow.showNext(layerA, animate: false)
-                        """
-
-
-    'Framer: showOverlayCenter':
-        'prefix': 'showOverlayCenter'
-        'body': """
-                flow.showOverlayCenter(layerA)
-                        """
-
-
-    'Framer: showOverlayRight':
-        'prefix': 'showOverlayRight'
-        'body': """
-                flow.showOverlayRight(layerA)
-                        """
-
-
-    'Framer: showOverlayLeft':
-        'prefix': 'showOverlayLeft'
-        'body': """
-                $flow.showOverlayLeft(layerA)
-                        """
-
-
-    'Framer: showPrevious':
-        'prefix': 'showPrevious'
-        'body': """
-                flow.showPrevious(layerA)
-                        """
-
-
-    'Framer: destroy':
-        'prefix': 'destroy'
-        'body': """
-                layerA.destroy()
-                        """
-
-
-    'Framer: Sublayer':
-        'prefix': 'sublayer'
-        'body': """
-                layerA = new Layer
-
-                layerB = new Layer
-                	parent: layerA
-                        """
-
-
-    'Framer: Video':
-        'prefix': 'video'
-        'body': """
-                video = new VideoLayer
-                	width: 1920
-                	height: 1080
-                	video: "filename.mov"
-
-                video.player.play()
-                        """
-
-
-    'Framer: Device Check':
-        'prefix': 'device check'
-        'body': """
-                desktop = Utils.isDesktop()
-                phone = Utils.isPhone()
-                tablet = Utils.isTablet()
-
-                if desktop == true
-                	print "This is a desktop."
-                if phone == true
-                	print "This is a phone."
-                if tablet == true
-                	print "This is a tablet."
-                        """
-
-
-    'Framer: Utils.delay':
-        'prefix': 'Utils.delay'
-        'body': """
-                Utils.delay 2.5, ->
-                	print "Hello World!"
-                        """
-
-
-    'Framer: Utils.interval':
-        'prefix': 'Utils.interval'
-        'body': """
-                Utils.interval 1, ->
-                	print "Hello World!"
-                        """
-
-
-
-    'Framer: Utils.domLoadJSON':
-        'prefix': 'Utils.domLoadJSON'
-        'body': """
-                Utils.domLoadJSON "https://api.github.com/repos/koenbok/Framer", (error, response) ->
-                	print response.name
-                	print response.url
-                	print response.description
-                        """
-
-
-
-    'Framer: Setup project':
-        'prefix': 'setup'
-        'body': """
-                # define objects
-                layerA = new Layer
-                	x: 275
-                	y: 567
-                	backgroundColor: "rgba(50,102,255,1)"
-
-                # define initial values
-                layerA.opacity = 0.5
-
-                # define springs
-                slowSpring = "spring(100,30,0)"
-
-                # define animations
-                grow = (layer) ->
-                	layer.animate
-                		properties:
-                			scale: 3
-                		curve: slowSpring
-
-                # define user actions
-                layerA.onClick ->
-                	grow(this)
-                        """
-
-
-
-    'Framer: scroll.contentInset':
-        'prefix': 'scroll.contentInset'
-        'body': """
-                scroll.contentInset =
-                	top: 100
-                	bottom: 100
-                	right: 0
-                	left: 0
-                        """
-
-
-
-    'Framer: scroll.directionLock':
-        'prefix': 'scroll.directionLock'
-        'body': """
-                scroll.directionLock = true
-                        """
-
-
-
-    'Framer: scroll.mouseWheelEnabled':
-        'prefix': 'scroll.mouseWheelEnabled'
-        'body': """
-                scroll.mouseWheelEnabled = true
-                        """
-
-
-
-    'Framer: scroll.onMove':
-        'prefix': 'scroll.onMove'
-        'body': """
-                scroll.onMove ->
-                	print scroll.scrollY
-                        """
-
-
-
-    'Framer: ScrollComponent':
-        'prefix': 'ScrollComponent'
-        'body': """
-                scroll = ScrollComponent.wrap(layerA)
-                scroll.scrollHorizontal = false
-                        """
-
-
-
-    'Framer: scroll.velocity':
-        'prefix': 'scroll.velocity'
-        'body': """
-                scroll.onMove ->
-                scroll.on Events.Scroll, ->
-                	print scroll.velocity
-                        """
-
-
-
-    'Framer: animationOptions':
-        'prefix': 'animationOptions'
-        'body': """
-                layerA.animationOptions =
-                	curve: "spring(250,25,0)"
-                        """
-
-
-
-    'Framer: stateCycle':
-        'prefix': 'stateCycle'
-        'body': """
-                layerA.stateCycle(["a", "b"])
-                        """
-
-
-
-    'Framer: Define states':
-        'prefix': 'states: difine'
-        'body': """
-                layerA.states.a =
-                	width: 400
-                	height: 400
-
-                layerA.states.b =
-                	width: 200
-                	height: 200
-                        """
-
-
-
-    'Framer: If current state name':
-        'prefix': 'states: current state name'
-        'body': """
-                if layerA.states.current.name == "a"
-                	layerB.animate
-                		properties:
-                			opacity: 1
-                		curve: "spring(270,24,10)"
-                        """
-
-
-
-    'Framer: backgroundColor':
-        'prefix': 'backgroundColor'
-        'body': """
-                layerA.backgroundColor = "#eee"
-                        """
-
-
-
-    'Framer: blur':
-        'prefix': 'blur'
-        'body': """
-                layerA.blur = 10
-                        """
-
-
-
-    'Framer: bringToFront':
-        'prefix': 'bringToFront'
-        'body': """
-                layerA.bringToFront()
-                        """
-
-
-
-    'Framer: center':
-        'prefix': 'center'
-        'body': """
-                layerA.center()
-                        """
-
-
-
-    'Framer: Border':
-        'prefix': 'border'
-        'body': """
-                layerA.borderWidth = 10
-                layerA.borderColor = "white"
-                        """
-
-
-
-    'Framer: Circle':
-        'prefix': 'circle'
-        'body': """
-                layerA.borderRadius = layerA.width/2
-                        """
-
-
-
-    'Framer: image':
-        'prefix': 'image'
-        'body': """
-                layerA.image = "https://pbs.twimg.com/profile_images/574269758595407872/DiT2a36E.jpeg"
-
-                        """
-
-
-
-    'Framer: name':
-        'prefix': 'name'
-        'body': """
-                layerA.name = "Layer Name"
-                        """
-
-
-
-    'Framer: placeBefore':
-        'prefix': 'placeBefore'
-        'body': """
-                layerA.placeBefore(layerB)
-                        """
-
-
-
-    'Framer: html':
-        'prefix': 'html'
-        'body': """
-                layerA.html = "Hello World!"
-                        """
-
-
-
-    'Framer: opacity':
-        'prefix': 'opacity'
-        'body': """
-                layerA.opacity = 0
-                        """
-
-
-
-    'Framer: placeBehind':
-        'prefix': 'placeBehind'
-        'body': """
-                layerA.placeBehind(layerB)
-                        """
-
-
-
-    'Framer: saturate':
-        'prefix': 'saturate'
-        'body': """
-                layerA.saturate = 0
-                        """
-
-
-
-    'Framer: sendToBack':
-        'prefix': 'sendToBack'
-        'body': """
-                layerA.sendToBack()
-                        """
-
-
-
-    'Framer: Shadow':
-        'prefix': 'shadow'
-        'body': """
-                layerA.shadowY = 10
-                layerA.shadowBlur = 40
-                layerA.shadowColor = "rgba(0,0,0,0.3)"
-                        """
-
-
-
-    'Framer: style':
-        'prefix': 'style'
-        'body': """
-                layerA.style =
-                	"background-color": "red",
-                	"borderRadius": "100px"
-                        """
-
-
-    'Framer: BackgroundLayer':
-        'prefix': 'BackgroundLayer'
-        'body': """
-                layerB = new BackgroundLayer
-                    backgroundColor: "white"
-                        """
+        'Framer: new Animation':
+                'prefix': 'new Animation'
+                'body': """
+                        new Animation
+                                """
+        'Framer: animate':
+                'prefix': 'animate'
+                'body': """
+                        animate
+                                """
+        'Framer: Bezier.linear':
+                'prefix': 'Bezier.linear'
+                'body': """
+                        Bezier.linear
+                                """
+        'Framer: Bezier.ease':
+                'prefix': 'Bezier.ease'
+                'body': """
+                        Bezier.ease
+                                """
+        'Framer: Bezier.easeIn':
+                'prefix': 'Bezier.easeIn'
+                'body': """
+                        Bezier.easeIn
+                                """
+        'Framer: Bezier.easeOut':
+                'prefix': 'Bezier.easeOut'
+                'body': """
+                        Bezier.easeOut
+                                """
+        'Framer: Bezier.easeInOut':
+                'prefix': 'Bezier.easeInOut'
+                'body': """
+                        Bezier.easeInOut
+                                """
+        'Framer: Spring':
+                'prefix': 'Spring'
+                'body': """
+                        Spring
+                                """
+        'Framer: x':
+                'prefix': 'x'
+                'body': """
+                        x
+                                """
+        'Framer: y':
+                'prefix': 'y'
+                'body': """
+                        y
+                                """
+        'Framer: z':
+                'prefix': 'z'
+                'body': """
+                        z
+                                """
+        'Framer: minX':
+                'prefix': 'minX'
+                'body': """
+                        minX
+                                """
+        'Framer: midX':
+                'prefix': 'midX'
+                'body': """
+                        midX
+                                """
+        'Framer: maxX':
+                'prefix': 'maxX'
+                'body': """
+                        maxX
+                                """
+        'Framer: minY':
+                'prefix': 'minY'
+                'body': """
+                        minY
+                                """
+        'Framer: midY':
+                'prefix': 'midY'
+                'body': """
+                        midY
+                                """
+        'Framer: maxY':
+                'prefix': 'maxY'
+                'body': """
+                        maxY
+                                """
+        'Framer: width':
+                'prefix': 'width'
+                'body': """
+                        width
+                                """
+        'Framer: height':
+                'prefix': 'height'
+                'body': """
+                        height
+                                """
+        'Framer: opacity':
+                'prefix': 'opacity'
+                'body': """
+                        opacity
+                                """
+        'Framer: rotation':
+                'prefix': 'rotation'
+                'body': """
+                        rotation
+                                """
+        'Framer: rotationX':
+                'prefix': 'rotationX'
+                'body': """
+                        rotationX
+                                """
+        'Framer: rotationY':
+                'prefix': 'rotationY'
+                'body': """
+                        rotationY
+                                """
+        'Framer: rotationZ':
+                'prefix': 'rotationZ'
+                'body': """
+                        rotationZ
+                                """
+        'Framer: scalescaleX':
+                'prefix': 'scalescaleX'
+                'body': """
+                        scalescaleX
+                                """
+        'Framer: scaleY':
+                'prefix': 'scaleY'
+                'body': """
+                        scaleY
+                                """
+        'Framer: scaleZ':
+                'prefix': 'scaleZ'
+                'body': """
+                        scaleZ
+                                """
+        'Framer: originX':
+                'prefix': 'originX'
+                'body': """
+                        originX
+                                """
+        'Framer: originY':
+                'prefix': 'originY'
+                'body': """
+                        originY
+                                """
+        'Framer: perspective':
+                'prefix': 'perspective'
+                'body': """
+                        perspective
+                                """
+        'Framer: scrollX':
+                'prefix': 'scrollX'
+                'body': """
+                        scrollX
+                                """
+        'Framer: scrollY':
+                'prefix': 'scrollY'
+                'body': """
+                        scrollY
+                                """
+        'Framer: borderRadius':
+                'prefix': 'borderRadius'
+                'body': """
+                        borderRadius
+                                """
+        'Framer: borderWidth':
+                'prefix': 'borderWidth'
+                'body': """
+                        borderWidth
+                                """
+        'Framer: shadowX':
+                'prefix': 'shadowX'
+                'body': """
+                        shadowX
+                                """
+        'Framer: shadowY':
+                'prefix': 'shadowY'
+                'body': """
+                        shadowY
+                                """
+        'Framer: shadowBlur':
+                'prefix': 'shadowBlur'
+                'body': """
+                        shadowBlur
+                                """
+        'Framer: shadowSpread':
+                'prefix': 'shadowSpread'
+                'body': """
+                        shadowSpread
+                                """
+        'Framer: blur':
+                'prefix': 'blur'
+                'body': """
+                        blur
+                                """
+        'Framer: brightness':
+                'prefix': 'brightness'
+                'body': """
+                        brightness
+                                """
+        'Framer: saturate':
+                'prefix': 'saturate'
+                'body': """
+                        saturate
+                                """
+        'Framer: hueRotate':
+                'prefix': 'hueRotate'
+                'body': """
+                        hueRotate
+                                """
+        'Framer: contrast':
+                'prefix': 'contrast'
+                'body': """
+                        contrast
+                                """
+        'Framer: invert':
+                'prefix': 'invert'
+                'body': """
+                        invert
+                                """
+        'Framer: grayscale':
+                'prefix': 'grayscale'
+                'body': """
+                        grayscale
+                                """
+        'Framer: sepia':
+                'prefix': 'sepia'
+                'body': """
+                        sepia
+                                """
+        'Framer: start()':
+                'prefix': 'start()'
+                'body': """
+                        start()
+                                """
+        'Framer: stop()':
+                'prefix': 'stop()'
+                'body': """
+                        stop()
+                                """
+        'Framer: reverse()':
+                'prefix': 'reverse()'
+                'body': """
+                        reverse()
+                                """
+        'Framer: reset()':
+                'prefix': 'reset()'
+                'body': """
+                        reset()
+                                """
+        'Framer: restart()':
+                'prefix': 'restart()'
+                'body': """
+                        restart()
+                                """
+        'Framer: finish()':
+                'prefix': 'finish()'
+                'body': """
+                        finish()
+                                """
+        'Framer: Canvas.backgroundColor':
+                'prefix': 'Canvas.backgroundColor'
+                'body': """
+                        Canvas.backgroundColor
+                                """
+        'Framer: Canvas.image':
+                'prefix': 'Canvas.image'
+                'body': """
+                        Canvas.image
+                                """
+        'Framer: Canvas.width':
+                'prefix': 'Canvas.width'
+                'body': """
+                        Canvas.width
+                                """
+        'Framer: Canvas.height':
+                'prefix': 'Canvas.height'
+                'body': """
+                        Canvas.height
+                                """
+        'Framer: Canvas.size':
+                'prefix': 'Canvas.size'
+                'body': """
+                        Canvas.size
+                                """
+        'Framer: Canvas.frame':
+                'prefix': 'Canvas.frame'
+                'body': """
+                        Canvas.frame
+                                """
+        'Framer: Canvas.convertPointToScreen($1)':
+                'prefix': 'Canvas.convertPointToScreen($1)'
+                'body': """
+                        Canvas.convertPointToScreen($1)
+                                """
+        'Framer: Canvas.convertPointToLayer($1,$2)':
+                'prefix': 'Canvas.convertPointToLayer($1,$2)'
+                'body': """
+                        Canvas.convertPointToLayer($1,$2)
+                                """
+        'Framer: new Color($1)':
+                'prefix': 'new Color($1)'
+                'body': """
+                        new Color($1)
+                                """
+        'Framer: color.lighten($1)':
+                'prefix': 'color.lighten($1)'
+                'body': """
+                        color.lighten($1)
+                                """
+        'Framer: color.darken($1)':
+                'prefix': 'color.darken($1)'
+                'body': """
+                        color.darken($1)
+                                """
+        'Framer: color.saturate($1)':
+                'prefix': 'color.saturate($1)'
+                'body': """
+                        color.saturate($1)
+                                """
+        'Framer: color.desaturate($1)':
+                'prefix': 'color.desaturate($1)'
+                'body': """
+                        color.desaturate($1)
+                                """
+        'Framer: color.grayscale()':
+                'prefix': 'color.grayscale()'
+                'body': """
+                        color.grayscale()
+                                """
+        'Framer: color.gray($1,$2)':
+                'prefix': 'color.gray($1,$2)'
+                'body': """
+                        color.gray($1,$2)
+                                """
+        'Framer: color.alpha($1)':
+                'prefix': 'color.alpha($1)'
+                'body': """
+                        color.alpha($1)
+                                """
+        'Framer: color.mix(colorA,colorB,fraction,limit,model)':
+                'prefix': 'color.mix(colorA,colorB,fraction,limit,model)'
+                'body': """
+                        color.mix(colorA,colorB,fraction,limit,model)
+                                """
+        'Framer: Color.random()':
+                'prefix': 'Color.random()'
+                'body': """
+                        Color.random()
+                                """
+        'Framer: Color.isColor($1)':
+                'prefix': 'Color.isColor($1)'
+                'body': """
+                        Color.isColor($1)
+                                """
+        'Framer: Color.isColorObject($1)':
+                'prefix': 'Color.isColorObject($1)'
+                'body': """
+                        Color.isColorObject($1)
+                                """
+        'Framer: Color.isColorString($1)':
+                'prefix': 'Color.isColorString($1)'
+                'body': """
+                        Color.isColorString($1)
+                                """
+        'Framer: color.toHexString()':
+                'prefix': 'color.toHexString()'
+                'body': """
+                        color.toHexString()
+                                """
+        'Framer: color.toRgbString()':
+                'prefix': 'color.toRgbString()'
+                'body': """
+                        color.toRgbString()
+                                """
+        'Framer: color.toHslString()':
+                'prefix': 'color.toHslString()'
+                'body': """
+                        color.toHslString()
+                                """
+        'Framer: Framer.Device.customize':
+                'prefix': 'Framer.Device.customize'
+                'body': """
+                        Framer.Device.customize
+                                """
+        'Framer: Framer.Device.deviceType':
+                'prefix': 'Framer.Device.deviceType'
+                'body': """
+                        Framer.Device.deviceType
+                                """
+        'Framer: Framer.Device.fullScreen':
+                'prefix': 'Framer.Device.fullScreen'
+                'body': """
+                        Framer.Device.fullScreen
+                                """
+        'Framer: Framer.Device.deviceScale':
+                'prefix': 'Framer.Device.deviceScale'
+                'body': """
+                        Framer.Device.deviceScale
+                                """
+        'Framer: Framer.Device.setDeviceScale($1,$2)':
+                'prefix': 'Framer.Device.setDeviceScale($1,$2)'
+                'body': """
+                        Framer.Device.setDeviceScale($1,$2)
+                                """
+        'Framer: Framer.Device.contentScale':
+                'prefix': 'Framer.Device.contentScale'
+                'body': """
+                        Framer.Device.contentScale
+                                """
+        'Framer: Framer.Device.setContentScale($1,$2)':
+                'prefix': 'Framer.Device.setContentScale($1,$2)'
+                'body': """
+                        Framer.Device.setContentScale($1,$2)
+                                """
+        'Framer: Framer.Device.orientation':
+                'prefix': 'Framer.Device.orientation'
+                'body': """
+                        Framer.Device.orientation
+                                """
+        'Framer: Framer.Device.setOrientation($1,$2)':
+                'prefix': 'Framer.Device.setOrientation($1,$2)'
+                'body': """
+                        Framer.Device.setOrientation($1,$2)
+                                """
+        'Framer: Framer.Device.orientationName':
+                'prefix': 'Framer.Device.orientationName'
+                'body': """
+                        Framer.Device.orientationName
+                                """
+        'Framer: Framer.Device.rotateLeft()':
+                'prefix': 'Framer.Device.rotateLeft()'
+                'body': """
+                        Framer.Device.rotateLeft()
+                                """
+        'Framer: Framer.Device.rotateRight()':
+                'prefix': 'Framer.Device.rotateRight()'
+                'body': """
+                        Framer.Device.rotateRight()
+                                """
+        'Framer: draggable.enabled':
+                'prefix': 'draggable.enabled'
+                'body': """
+                        draggable.enabled
+                                """
+        'Framer: draggable.horizontal':
+                'prefix': 'draggable.horizontal'
+                'body': """
+                        draggable.horizontal
+                                """
+        'Framer: draggable.vertical':
+                'prefix': 'draggable.vertical'
+                'body': """
+                        draggable.vertical
+                                """
+        'Framer: draggable.speedX':
+                'prefix': 'draggable.speedX'
+                'body': """
+                        draggable.speedX
+                                """
+        'Framer: draggable.speedY':
+                'prefix': 'draggable.speedY'
+                'body': """
+                        draggable.speedY
+                                """
+        'Framer: draggable.constraints':
+                'prefix': 'draggable.constraints'
+                'body': """
+                        draggable.constraints
+                                """
+        'Framer: draggable.constraintsOffset':
+                'prefix': 'draggable.constraintsOffset'
+                'body': """
+                        draggable.constraintsOffset
+                                """
+        'Framer: draggable.isBeyondConstraints':
+                'prefix': 'draggable.isBeyondConstraints'
+                'body': """
+                        draggable.isBeyondConstraints
+                                """
+        'Framer: draggable.overdrag':
+                'prefix': 'draggable.overdrag'
+                'body': """
+                        draggable.overdrag
+                                """
+        'Framer: draggable.overdragScale':
+                'prefix': 'draggable.overdragScale'
+                'body': """
+                        draggable.overdragScale
+                                """
+        'Framer: draggable.momentum':
+                'prefix': 'draggable.momentum'
+                'body': """
+                        draggable.momentum
+                                """
+        'Framer: draggable.momentumOptions':
+                'prefix': 'draggable.momentumOptions'
+                'body': """
+                        draggable.momentumOptions
+                                """
+        'Framer: draggable.bounce':
+                'prefix': 'draggable.bounce'
+                'body': """
+                        draggable.bounce
+                                """
+        'Framer: draggable.bounceOptions':
+                'prefix': 'draggable.bounceOptions'
+                'body': """
+                        draggable.bounceOptions
+                                """
+        'Framer: draggable.velocity':
+                'prefix': 'draggable.velocity'
+                'body': """
+                        draggable.velocity
+                                """
+        'Framer: draggable.direction':
+                'prefix': 'draggable.direction'
+                'body': """
+                        draggable.direction
+                                """
+        'Framer: draggable.angle':
+                'prefix': 'draggable.angle'
+                'body': """
+                        draggable.angle
+                                """
+        'Framer: draggable.updatePosition()':
+                'prefix': 'draggable.updatePosition()'
+                'body': """
+                        draggable.updatePosition()
+                                """
+        'Framer: draggable.directionLock':
+                'prefix': 'draggable.directionLock'
+                'body': """
+                        draggable.directionLock
+                                """
+        'Framer: draggable.directionLockThreshold':
+                'prefix': 'draggable.directionLockThreshold'
+                'body': """
+                        draggable.directionLockThreshold
+                                """
+        'Framer: draggable.pixelAlign':
+                'prefix': 'draggable.pixelAlign'
+                'body': """
+                        draggable.pixelAlign
+                                """
+        'Framer: draggable.isDragging':
+                'prefix': 'draggable.isDragging'
+                'body': """
+                        draggable.isDragging
+                                """
+        'Framer: draggable.isAnimating':
+                'prefix': 'draggable.isAnimating'
+                'body': """
+                        draggable.isAnimating
+                                """
+        'Framer: draggable.isMoving':
+                'prefix': 'draggable.isMoving'
+                'body': """
+                        draggable.isMoving
+                                """
+        'Framer: draggable.offset':
+                'prefix': 'draggable.offset'
+                'body': """
+                        draggable.offset
+                                """
+        'Framer: draggable.layerStartPoint':
+                'prefix': 'draggable.layerStartPoint'
+                'body': """
+                        draggable.layerStartPoint
+                                """
+        'Framer: draggable.cursorStartPoint':
+                'prefix': 'draggable.cursorStartPoint'
+                'body': """
+                        draggable.cursorStartPoint
+                                """
+        'Framer: draggable.layerCursorOffset':
+                'prefix': 'draggable.layerCursorOffset'
+                'body': """
+                        draggable.layerCursorOffset
+                                """
+        'Framer: draggable.propagateEvents':
+                'prefix': 'draggable.propagateEvents'
+                'body': """
+                        draggable.propagateEvents
+                                """
+        'Framer: Events.Tap':
+                'prefix': 'Events.Tap'
+                'body': """
+                        Events.Tap
+                                """
+        'Framer: onTap':
+                'prefix': 'onTap'
+                'body': """
+                        onTap
+                                """
+        'Framer: onSingleTap':
+                'prefix': 'onSingleTap'
+                'body': """
+                        onSingleTap
+                                """
+        'Framer: onDoubleTap':
+                'prefix': 'onDoubleTap'
+                'body': """
+                        onDoubleTap
+                                """
+        'Framer: Events.ForceTap':
+                'prefix': 'Events.ForceTap'
+                'body': """
+                        Events.ForceTap
+                                """
+        'Framer: Events.ForceTap':
+                'prefix': 'Events.ForceTap'
+                'body': """
+                        Events.ForceTap
+                                """
+        'Framer: Events.ForceTapChange':
+                'prefix': 'Events.ForceTapChange'
+                'body': """
+                        Events.ForceTapChange
+                                """
+        'Framer: Events.ForceTapStart':
+                'prefix': 'Events.ForceTapStart'
+                'body': """
+                        Events.ForceTapStart
+                                """
+        'Framer: Events.ForceTapEnd':
+                'prefix': 'Events.ForceTapEnd'
+                'body': """
+                        Events.ForceTapEnd
+                                """
+        'Framer: onForceTap':
+                'prefix': 'onForceTap'
+                'body': """
+                        onForceTap
+                                """
+        'Framer: onForceTapChange':
+                'prefix': 'onForceTapChange'
+                'body': """
+                        onForceTapChange
+                                """
+        'Framer: onForceTapStart':
+                'prefix': 'onForceTapStart'
+                'body': """
+                        onForceTapStart
+                                """
+        'Framer: onForceTapEnd':
+                'prefix': 'onForceTapEnd'
+                'body': """
+                        onForceTapEnd
+                                """
+        'Framer: Events.LongPress':
+                'prefix': 'Events.LongPress'
+                'body': """
+                        Events.LongPress
+                                """
+        'Framer: Events.LongPressStart':
+                'prefix': 'Events.LongPressStart'
+                'body': """
+                        Events.LongPressStart
+                                """
+        'Framer: Events.LongPressEnd':
+                'prefix': 'Events.LongPressEnd'
+                'body': """
+                        Events.LongPressEnd
+                                """
+        'Framer: onLongPress':
+                'prefix': 'onLongPress'
+                'body': """
+                        onLongPress
+                                """
+        'Framer: onLongPressStart':
+                'prefix': 'onLongPressStart'
+                'body': """
+                        onLongPressStart
+                                """
+        'Framer: onLongPressEnd':
+                'prefix': 'onLongPressEnd'
+                'body': """
+                        onLongPressEnd
+                                """
+        'Framer: Events.Swipe':
+                'prefix': 'Events.Swipe'
+                'body': """
+                        Events.Swipe
+                                """
+        'Framer: Events.SwipeStart':
+                'prefix': 'Events.SwipeStart'
+                'body': """
+                        Events.SwipeStart
+                                """
+        'Framer: Events.SwipeEnd':
+                'prefix': 'Events.SwipeEnd'
+                'body': """
+                        Events.SwipeEnd
+                                """
+        'Framer: onSwipeStart':
+                'prefix': 'onSwipeStart'
+                'body': """
+                        onSwipeStart
+                                """
+        'Framer: onSwipeEnd':
+                'prefix': 'onSwipeEnd'
+                'body': """
+                        onSwipeEnd
+                                """
+        'Framer: Events.SwipeUp':
+                'prefix': 'Events.SwipeUp'
+                'body': """
+                        Events.SwipeUp
+                                """
+        'Framer: Events.SwipeUpStart':
+                'prefix': 'Events.SwipeUpStart'
+                'body': """
+                        Events.SwipeUpStart
+                                """
+        'Framer: Events.SwipeUpEnd':
+                'prefix': 'Events.SwipeUpEnd'
+                'body': """
+                        Events.SwipeUpEnd
+                                """
+        'Framer: onRotate':
+                'prefix': 'onRotate'
+                'body': """
+                        onRotate
+                                """
+        'Framer: onSwipeUp':
+                'prefix': 'onSwipeUp'
+                'body': """
+                        onSwipeUp
+                                """
+        'Framer: onSwipeUpStart':
+                'prefix': 'onSwipeUpStart'
+                'body': """
+                        onSwipeUpStart
+                                """
+        'Framer: onSwipeUpEnd':
+                'prefix': 'onSwipeUpEnd'
+                'body': """
+                        onSwipeUpEnd
+                                """
+        'Framer: Events.SwipeDown':
+                'prefix': 'Events.SwipeDown'
+                'body': """
+                        Events.SwipeDown
+                                """
+        'Framer: Events.SwipeDownStart':
+                'prefix': 'Events.SwipeDownStart'
+                'body': """
+                        Events.SwipeDownStart
+                                """
+        'Framer: Events.SwipeDownEnd':
+                'prefix': 'Events.SwipeDownEnd'
+                'body': """
+                        Events.SwipeDownEnd
+                                """
+        'Framer: onSwipeDown':
+                'prefix': 'onSwipeDown'
+                'body': """
+                        onSwipeDown
+                                """
+        'Framer: onSwipeDownStart':
+                'prefix': 'onSwipeDownStart'
+                'body': """
+                        onSwipeDownStart
+                                """
+        'Framer: onSwipeDownEnd':
+                'prefix': 'onSwipeDownEnd'
+                'body': """
+                        onSwipeDownEnd
+                                """
+        'Framer: Events.SwipeLeft':
+                'prefix': 'Events.SwipeLeft'
+                'body': """
+                        Events.SwipeLeft
+                                """
+        'Framer: Events.SwipeLeftStart':
+                'prefix': 'Events.SwipeLeftStart'
+                'body': """
+                        Events.SwipeLeftStart
+                                """
+        'Framer: Events.SwipeLeftEnd':
+                'prefix': 'Events.SwipeLeftEnd'
+                'body': """
+                        Events.SwipeLeftEnd
+                                """
+        'Framer: onSwipeLeft':
+                'prefix': 'onSwipeLeft'
+                'body': """
+                        onSwipeLeft
+                                """
+        'Framer: onSwipeLeftStart':
+                'prefix': 'onSwipeLeftStart'
+                'body': """
+                        onSwipeLeftStart
+                                """
+        'Framer: onSwipeLeftEnd':
+                'prefix': 'onSwipeLeftEnd'
+                'body': """
+                        onSwipeLeftEnd
+                                """
+        'Framer: Events.SwipeRight':
+                'prefix': 'Events.SwipeRight'
+                'body': """
+                        Events.SwipeRight
+                                """
+        'Framer: Events.SwipeRightStart':
+                'prefix': 'Events.SwipeRightStart'
+                'body': """
+                        Events.SwipeRightStart
+                                """
+        'Framer: Events.SwipeRightEnd':
+                'prefix': 'Events.SwipeRightEnd'
+                'body': """
+                        Events.SwipeRightEnd
+                                """
+        'Framer: onSwipeRight':
+                'prefix': 'onSwipeRight'
+                'body': """
+                        onSwipeRight
+                                """
+        'Framer: onSwipeRightStart':
+                'prefix': 'onSwipeRightStart'
+                'body': """
+                        onSwipeRightStart
+                                """
+        'Framer: onSwipeRightEnd':
+                'prefix': 'onSwipeRightEnd'
+                'body': """
+                        onSwipeRightEnd
+                                """
+        'Framer: Events.Pan':
+                'prefix': 'Events.Pan'
+                'body': """
+                        Events.Pan
+                                """
+        'Framer: Events.PanStart':
+                'prefix': 'Events.PanStart'
+                'body': """
+                        Events.PanStart
+                                """
+        'Framer: Events.PanMove':
+                'prefix': 'Events.PanMove'
+                'body': """
+                        Events.PanMove
+                                """
+        'Framer: Events.PanEnd':
+                'prefix': 'Events.PanEnd'
+                'body': """
+                        Events.PanEnd
+                                """
+        'Framer: Events.PanLeft':
+                'prefix': 'Events.PanLeft'
+                'body': """
+                        Events.PanLeft
+                                """
+        'Framer: Events.PanRight':
+                'prefix': 'Events.PanRight'
+                'body': """
+                        Events.PanRight
+                                """
+        'Framer: Events.PanUp':
+                'prefix': 'Events.PanUp'
+                'body': """
+                        Events.PanUp
+                                """
+        'Framer: Events.PanDown':
+                'prefix': 'Events.PanDown'
+                'body': """
+                        Events.PanDown
+                                """
+        'Framer: onPan':
+                'prefix': 'onPan'
+                'body': """
+                        onPan
+                                """
+        'Framer: onPanStart':
+                'prefix': 'onPanStart'
+                'body': """
+                        onPanStart
+                                """
+        'Framer: onPanMove':
+                'prefix': 'onPanMove'
+                'body': """
+                        onPanMove
+                                """
+        'Framer: onPanEnd':
+                'prefix': 'onPanEnd'
+                'body': """
+                        onPanEnd
+                                """
+        'Framer: onPanLeft':
+                'prefix': 'onPanLeft'
+                'body': """
+                        onPanLeft
+                                """
+        'Framer: onPanRight':
+                'prefix': 'onPanRight'
+                'body': """
+                        onPanRight
+                                """
+        'Framer: onPanUp':
+                'prefix': 'onPanUp'
+                'body': """
+                        onPanUp
+                                """
+        'Framer: onPanDown':
+                'prefix': 'onPanDown'
+                'body': """
+                        onPanDown
+                                """
+        'Framer: Events.Pinch':
+                'prefix': 'Events.Pinch'
+                'body': """
+                        Events.Pinch
+                                """
+        'Framer: Events.PinchStart':
+                'prefix': 'Events.PinchStart'
+                'body': """
+                        Events.PinchStart
+                                """
+        'Framer: Events.PinchEnd':
+                'prefix': 'Events.PinchEnd'
+                'body': """
+                        Events.PinchEnd
+                                """
+        'Framer: onPinch':
+                'prefix': 'onPinch'
+                'body': """
+                        onPinch
+                                """
+        'Framer: onPinchStart':
+                'prefix': 'onPinchStart'
+                'body': """
+                        onPinchStart
+                                """
+        'Framer: onPinchEnd':
+                'prefix': 'onPinchEnd'
+                'body': """
+                        onPinchEnd
+                                """
+        'Framer: Events.Scale':
+                'prefix': 'Events.Scale'
+                'body': """
+                        Events.Scale
+                                """
+        'Framer: Events.ScaleStart':
+                'prefix': 'Events.ScaleStart'
+                'body': """
+                        Events.ScaleStart
+                                """
+        'Framer: Events.ScaleEnd':
+                'prefix': 'Events.ScaleEnd'
+                'body': """
+                        Events.ScaleEnd
+                                """
+        'Framer: scale':
+                'prefix': 'scale'
+                'body': """
+                        scale
+                                """
+        'Framer: onScale':
+                'prefix': 'onScale'
+                'body': """
+                        onScale
+                                """
+        'Framer: onScaleStart':
+                'prefix': 'onScaleStart'
+                'body': """
+                        onScaleStart
+                                """
+        'Framer: onScaleEnd':
+                'prefix': 'onScaleEnd'
+                'body': """
+                        onScaleEnd
+                                """
+        'Framer: Events.Rotate':
+                'prefix': 'Events.Rotate'
+                'body': """
+                        Events.Rotate
+                                """
+        'Framer: Events.RotateStart':
+                'prefix': 'Events.RotateStart'
+                'body': """
+                        Events.RotateStart
+                                """
+        'Framer: Events.RotateEnd':
+                'prefix': 'Events.RotateEnd'
+                'body': """
+                        Events.RotateEnd
+                                """
+        'Framer: rotation':
+                'prefix': 'rotation'
+                'body': """
+                        rotation
+                                """
+        'Framer: onRotate':
+                'prefix': 'onRotate'
+                'body': """
+                        onRotate
+                                """
+        'Framer: onRotateStart':
+                'prefix': 'onRotateStart'
+                'body': """
+                        onRotateStart
+                                """
+        'Framer: onRotateEnd':
+                'prefix': 'onRotateEnd'
+                'body': """
+                        onRotateEnd
+                                """
+        'Framer: Events.TouchStart':
+                'prefix': 'Events.TouchStart'
+                'body': """
+                        Events.TouchStart
+                                """
+        'Framer: Events.TouchMove':
+                'prefix': 'Events.TouchMove'
+                'body': """
+                        Events.TouchMove
+                                """
+        'Framer: Events.TouchEnd':
+                'prefix': 'Events.TouchEnd'
+                'body': """
+                        Events.TouchEnd
+                                """
+        'Framer: onTouchStart':
+                'prefix': 'onTouchStart'
+                'body': """
+                        onTouchStart
+                                """
+        'Framer: onTouchMove':
+                'prefix': 'onTouchMove'
+                'body': """
+                        onTouchMove
+                                """
+        'Framer: onTouchEnd':
+                'prefix': 'onTouchEnd'
+                'body': """
+                        onTouchEnd
+                                """
+        'Framer: Events.Click':
+                'prefix': 'Events.Click'
+                'body': """
+                        Events.Click
+                                """
+        'Framer: onClick':
+                'prefix': 'onClick'
+                'body': """
+                        onClick
+                                """
+        'Framer: Events.MouseUp':
+                'prefix': 'Events.MouseUp'
+                'body': """
+                        Events.MouseUp
+                                """
+        'Framer: Events.MouseDown':
+                'prefix': 'Events.MouseDown'
+                'body': """
+                        Events.MouseDown
+                                """
+        'Framer: Events.MouseOver':
+                'prefix': 'Events.MouseOver'
+                'body': """
+                        Events.MouseOver
+                                """
+        'Framer: Events.MouseOut':
+                'prefix': 'Events.MouseOut'
+                'body': """
+                        Events.MouseOut
+                                """
+        'Framer: Events.MouseMove':
+                'prefix': 'Events.MouseMove'
+                'body': """
+                        Events.MouseMove
+                                """
+        'Framer: Events.MouseWheel':
+                'prefix': 'Events.MouseWheel'
+                'body': """
+                        Events.MouseWheel
+                                """
+        'Framer: onMouseUp':
+                'prefix': 'onMouseUp'
+                'body': """
+                        onMouseUp
+                                """
+        'Framer: onMouseDown':
+                'prefix': 'onMouseDown'
+                'body': """
+                        onMouseDown
+                                """
+        'Framer: onMouseOver':
+                'prefix': 'onMouseOver'
+                'body': """
+                        onMouseOver
+                                """
+        'Framer: onMouseOut':
+                'prefix': 'onMouseOut'
+                'body': """
+                        onMouseOut
+                                """
+        'Framer: onMouseMove':
+                'prefix': 'onMouseMove'
+                'body': """
+                        onMouseMove
+                                """
+        'Framer: onMouseWheel':
+                'prefix': 'onMouseWheel'
+                'body': """
+                        onMouseWheel
+                                """
+        'Framer: Events.AnimationStart':
+                'prefix': 'Events.AnimationStart'
+                'body': """
+                        Events.AnimationStart
+                                """
+        'Framer: Events.AnimationStop':
+                'prefix': 'Events.AnimationStop'
+                'body': """
+                        Events.AnimationStop
+                                """
+        'Framer: Events.AnimationEnd':
+                'prefix': 'Events.AnimationEnd'
+                'body': """
+                        Events.AnimationEnd
+                                """
+        'Framer: onAnimationStart':
+                'prefix': 'onAnimationStart'
+                'body': """
+                        onAnimationStart
+                                """
+        'Framer: onAnimationStop':
+                'prefix': 'onAnimationStop'
+                'body': """
+                        onAnimationStop
+                                """
+        'Framer: onAnimationEnd':
+                'prefix': 'onAnimationEnd'
+                'body': """
+                        onAnimationEnd
+                                """
+        'Framer: Events.StateSwitchStart':
+                'prefix': 'Events.StateSwitchStart'
+                'body': """
+                        Events.StateSwitchStart
+                                """
+        'Framer: Events.StateSwitchStop':
+                'prefix': 'Events.StateSwitchStop'
+                'body': """
+                        Events.StateSwitchStop
+                                """
+        'Framer: Events.StateSwitchEnd':
+                'prefix': 'Events.StateSwitchEnd'
+                'body': """
+                        Events.StateSwitchEnd
+                                """
+        'Framer: onStateSwitchStart':
+                'prefix': 'onStateSwitchStart'
+                'body': """
+                        onStateSwitchStart
+                                """
+        'Framer: onStateSwitchStop':
+                'prefix': 'onStateSwitchStop'
+                'body': """
+                        onStateSwitchStop
+                                """
+        'Framer: onStateSwitchEnd':
+                'prefix': 'onStateSwitchEnd'
+                'body': """
+                        onStateSwitchEnd
+                                """
+        'Framer: Events.Move':
+                'prefix': 'Events.Move'
+                'body': """
+                        Events.Move
+                                """
+        'Framer: Events.DragStart':
+                'prefix': 'Events.DragStart'
+                'body': """
+                        Events.DragStart
+                                """
+        'Framer: Events.Drag':
+                'prefix': 'Events.Drag'
+                'body': """
+                        Events.Drag
+                                """
+        'Framer: Events.DragEnd':
+                'prefix': 'Events.DragEnd'
+                'body': """
+                        Events.DragEnd
+                                """
+        'Framer: Events.DragAnimationStart':
+                'prefix': 'Events.DragAnimationStart'
+                'body': """
+                        Events.DragAnimationStart
+                                """
+        'Framer: Events.DragAnimationEnd':
+                'prefix': 'Events.DragAnimationEnd'
+                'body': """
+                        Events.DragAnimationEnd
+                                """
+        'Framer: Events.DirectionLockStart':
+                'prefix': 'Events.DirectionLockStart'
+                'body': """
+                        Events.DirectionLockStart
+                                """
+        'Framer: onMove':
+                'prefix': 'onMove'
+                'body': """
+                        onMove
+                                """
+        'Framer: onDragStart':
+                'prefix': 'onDragStart'
+                'body': """
+                        onDragStart
+                                """
+        'Framer: onDrag':
+                'prefix': 'onDrag'
+                'body': """
+                        onDrag
+                                """
+        'Framer: onDragEnd':
+                'prefix': 'onDragEnd'
+                'body': """
+                        onDragEnd
+                                """
+        'Framer: onDragAnimationStart':
+                'prefix': 'onDragAnimationStart'
+                'body': """
+                        onDragAnimationStart
+                                """
+        'Framer: onDragAnimationEnd':
+                'prefix': 'onDragAnimationEnd'
+                'body': """
+                        onDragAnimationEnd
+                                """
+        'Framer: onDirectionLockStart':
+                'prefix': 'onDirectionLockStart'
+                'body': """
+                        onDirectionLockStart
+                                """
+        'Framer: Events.Move':
+                'prefix': 'Events.Move'
+                'body': """
+                        Events.Move
+                                """
+        'Framer: Events.ScrollStart':
+                'prefix': 'Events.ScrollStart'
+                'body': """
+                        Events.ScrollStart
+                                """
+        'Framer: Events.Scroll':
+                'prefix': 'Events.Scroll'
+                'body': """
+                        Events.Scroll
+                                """
+        'Framer: Events.ScrollEnd':
+                'prefix': 'Events.ScrollEnd'
+                'body': """
+                        Events.ScrollEnd
+                                """
+        'Framer: Events.ScrollAnimationDidStart':
+                'prefix': 'Events.ScrollAnimationDidStart'
+                'body': """
+                        Events.ScrollAnimationDidStart
+                                """
+        'Framer: Events.ScrollAnimationDidEnd':
+                'prefix': 'Events.ScrollAnimationDidEnd'
+                'body': """
+                        Events.ScrollAnimationDidEnd
+                                """
+        'Framer: onMove':
+                'prefix': 'onMove'
+                'body': """
+                        onMove
+                                """
+        'Framer: onScrollStart':
+                'prefix': 'onScrollStart'
+                'body': """
+                        onScrollStart
+                                """
+        'Framer: onScroll':
+                'prefix': 'onScroll'
+                'body': """
+                        onScroll
+                                """
+        'Framer: onScrollEnd':
+                'prefix': 'onScrollEnd'
+                'body': """
+                        onScrollEnd
+                                """
+        'Framer: onScrollAnimationDidStart':
+                'prefix': 'onScrollAnimationDidStart'
+                'body': """
+                        onScrollAnimationDidStart
+                                """
+        'Framer: onScrollAnimationDidEnd':
+                'prefix': 'onScrollAnimationDidEnd'
+                'body': """
+                        onScrollAnimationDidEnd
+                                """
+        'Framer: Events.EdgeSwipe':
+                'prefix': 'Events.EdgeSwipe'
+                'body': """
+                        Events.EdgeSwipe
+                                """
+        'Framer: Events.EdgeSwipeStart':
+                'prefix': 'Events.EdgeSwipeStart'
+                'body': """
+                        Events.EdgeSwipeStart
+                                """
+        'Framer: Events.EdgeSwipeEnd':
+                'prefix': 'Events.EdgeSwipeEnd'
+                'body': """
+                        Events.EdgeSwipeEnd
+                                """
+        'Framer: onEdgeSwipe':
+                'prefix': 'onEdgeSwipe'
+                'body': """
+                        onEdgeSwipe
+                                """
+        'Framer: onEdgeSwipeStart':
+                'prefix': 'onEdgeSwipeStart'
+                'body': """
+                        onEdgeSwipeStart
+                                """
+        'Framer: onEdgeSwipeEnd':
+                'prefix': 'onEdgeSwipeEnd'
+                'body': """
+                        onEdgeSwipeEnd
+                                """
+        'Framer: Events.EdgeSwipeTop':
+                'prefix': 'Events.EdgeSwipeTop'
+                'body': """
+                        Events.EdgeSwipeTop
+                                """
+        'Framer: Events.EdgeSwipeTopStart':
+                'prefix': 'Events.EdgeSwipeTopStart'
+                'body': """
+                        Events.EdgeSwipeTopStart
+                                """
+        'Framer: Events.EdgeSwipeTopEnd':
+                'prefix': 'Events.EdgeSwipeTopEnd'
+                'body': """
+                        Events.EdgeSwipeTopEnd
+                                """
+        'Framer: onEdgeSwipeTop':
+                'prefix': 'onEdgeSwipeTop'
+                'body': """
+                        onEdgeSwipeTop
+                                """
+        'Framer: onEdgeSwipeTopStart':
+                'prefix': 'onEdgeSwipeTopStart'
+                'body': """
+                        onEdgeSwipeTopStart
+                                """
+        'Framer: onEdgeSwipeTopEnd':
+                'prefix': 'onEdgeSwipeTopEnd'
+                'body': """
+                        onEdgeSwipeTopEnd
+                                """
+        'Framer: Events.EdgeSwipeLeft':
+                'prefix': 'Events.EdgeSwipeLeft'
+                'body': """
+                        Events.EdgeSwipeLeft
+                                """
+        'Framer: Events.EdgeSwipeLeftStart':
+                'prefix': 'Events.EdgeSwipeLeftStart'
+                'body': """
+                        Events.EdgeSwipeLeftStart
+                                """
+        'Framer: Events.EdgeSwipeLeftEnd':
+                'prefix': 'Events.EdgeSwipeLeftEnd'
+                'body': """
+                        Events.EdgeSwipeLeftEnd
+                                """
+        'Framer: onEdgeSwipeLeft':
+                'prefix': 'onEdgeSwipeLeft'
+                'body': """
+                        onEdgeSwipeLeft
+                                """
+        'Framer: onEdgeSwipeLeftStart':
+                'prefix': 'onEdgeSwipeLeftStart'
+                'body': """
+                        onEdgeSwipeLeftStart
+                                """
+        'Framer: onEdgeSwipeLeftEnd':
+                'prefix': 'onEdgeSwipeLeftEnd'
+                'body': """
+                        onEdgeSwipeLeftEnd
+                                """
+        'Framer: Events.EdgeSwipeRight':
+                'prefix': 'Events.EdgeSwipeRight'
+                'body': """
+                        Events.EdgeSwipeRight
+                                """
+        'Framer: Events.EdgeSwipeRightStart':
+                'prefix': 'Events.EdgeSwipeRightStart'
+                'body': """
+                        Events.EdgeSwipeRightStart
+                                """
+        'Framer: Events.EdgeSwipeRightEnd':
+                'prefix': 'Events.EdgeSwipeRightEnd'
+                'body': """
+                        Events.EdgeSwipeRightEnd
+                                """
+        'Framer: onEdgeSwipeRight':
+                'prefix': 'onEdgeSwipeRight'
+                'body': """
+                        onEdgeSwipeRight
+                                """
+        'Framer: onEdgeSwipeRightStart':
+                'prefix': 'onEdgeSwipeRightStart'
+                'body': """
+                        onEdgeSwipeRightStart
+                                """
+        'Framer: onEdgeSwipeRightEnd':
+                'prefix': 'onEdgeSwipeRightEnd'
+                'body': """
+                        onEdgeSwipeRightEnd
+                                """
+        'Framer: Events.EdgeSwipeBottom':
+                'prefix': 'Events.EdgeSwipeBottom'
+                'body': """
+                        Events.EdgeSwipeBottom
+                                """
+        'Framer: Events.EdgeSwipeBottomStart':
+                'prefix': 'Events.EdgeSwipeBottomStart'
+                'body': """
+                        Events.EdgeSwipeBottomStart
+                                """
+        'Framer: Events.EdgeSwipeBottomEnd':
+                'prefix': 'Events.EdgeSwipeBottomEnd'
+                'body': """
+                        Events.EdgeSwipeBottomEnd
+                                """
+        'Framer: onEdgeSwipeBottom':
+                'prefix': 'onEdgeSwipeBottom'
+                'body': """
+                        onEdgeSwipeBottom
+                                """
+        'Framer: onEdgeSwipeBottomStart':
+                'prefix': 'onEdgeSwipeBottomStart'
+                'body': """
+                        onEdgeSwipeBottomStart
+                                """
+        'Framer: onEdgeSwipeBottomEnd':
+                'prefix': 'onEdgeSwipeBottomEnd'
+                'body': """
+                        onEdgeSwipeBottomEnd
+                                """
+        'Framer: Events.TransitionStart':
+                'prefix': 'Events.TransitionStart'
+                'body': """
+                        Events.TransitionStart
+                                """
+        'Framer: Events.TransitionHalt':
+                'prefix': 'Events.TransitionHalt'
+                'body': """
+                        Events.TransitionHalt
+                                """
+        'Framer: Events.TransitionStop':
+                'prefix': 'Events.TransitionStop'
+                'body': """
+                        Events.TransitionStop
+                                """
+        'Framer: Events.TransitionEnd':
+                'prefix': 'Events.TransitionEnd'
+                'body': """
+                        Events.TransitionEnd
+                                """
+        'Framer: onTransitionStart':
+                'prefix': 'onTransitionStart'
+                'body': """
+                        onTransitionStart
+                                """
+        'Framer: onTransitionHalt':
+                'prefix': 'onTransitionHalt'
+                'body': """
+                        onTransitionHalt
+                                """
+        'Framer: onTransitionStop':
+                'prefix': 'onTransitionStop'
+                'body': """
+                        onTransitionStop
+                                """
+        'Framer: onTransitionEnd':
+                'prefix': 'onTransitionEnd'
+                'body': """
+                        onTransitionEnd
+                                """
+        'Framer: event.point':
+                'prefix': 'event.point'
+                'body': """
+                        event.point
+                                """
+        'Framer: event.start':
+                'prefix': 'event.start'
+                'body': """
+                        event.start
+                                """
+        'Framer: event.previous':
+                'prefix': 'event.previous'
+                'body': """
+                        event.previous
+                                """
+        'Framer: event.offset':
+                'prefix': 'event.offset'
+                'body': """
+                        event.offset
+                                """
+        'Framer: event.offsetTime':
+                'prefix': 'event.offsetTime'
+                'body': """
+                        event.offsetTime
+                                """
+        'Framer: event.offsetAngle':
+                'prefix': 'event.offsetAngle'
+                'body': """
+                        event.offsetAngle
+                                """
+        'Framer: event.offsetDirection':
+                'prefix': 'event.offsetDirection'
+                'body': """
+                        event.offsetDirection
+                                """
+        'Framer: event.delta':
+                'prefix': 'event.delta'
+                'body': """
+                        event.delta
+                                """
+        'Framer: event.deltaTime':
+                'prefix': 'event.deltaTime'
+                'body': """
+                        event.deltaTime
+                                """
+        'Framer: event.deltaAngle':
+                'prefix': 'event.deltaAngle'
+                'body': """
+                        event.deltaAngle
+                                """
+        'Framer: event.deltaDirection':
+                'prefix': 'event.deltaDirection'
+                'body': """
+                        event.deltaDirection
+                                """
+        'Framer: event.velocity':
+                'prefix': 'event.velocity'
+                'body': """
+                        event.velocity
+                                """
+        'Framer: event.force':
+                'prefix': 'event.force'
+                'body': """
+                        event.force
+                                """
+        'Framer: event.fingers':
+                'prefix': 'event.fingers'
+                'body': """
+                        event.fingers
+                                """
+        'Framer: event.touchCenter':
+                'prefix': 'event.touchCenter'
+                'body': """
+                        event.touchCenter
+                                """
+        'Framer: event.touchDistance':
+                'prefix': 'event.touchDistance'
+                'body': """
+                        event.touchDistance
+                                """
+        'Framer: event.touchOffset':
+                'prefix': 'event.touchOffset'
+                'body': """
+                        event.touchOffset
+                                """
+        'Framer: event.scale':
+                'prefix': 'event.scale'
+                'body': """
+                        event.scale
+                                """
+        'Framer: event.scaleDirection':
+                'prefix': 'event.scaleDirection'
+                'body': """
+                        event.scaleDirection
+                                """
+        'Framer: event.rotation':
+                'prefix': 'event.rotation'
+                'body': """
+                        event.rotation
+                                """
+        'Framer: Events.touchEvent($1)':
+                'prefix': 'Events.touchEvent($1)'
+                'body': """
+                        Events.touchEvent($1)
+                                """
+        'Framer: Events.wrap($1)':
+                'prefix': 'Events.wrap($1)'
+                'body': """
+                        Events.wrap($1)
+                                """
+        'Framer: new FlowComponent':
+                'prefix': 'new FlowComponent'
+                'body': """
+                        new FlowComponent
+                                """
+        'Framer: flow.showNext($1,$2)':
+                'prefix': 'flow.showNext($1,$2)'
+                'body': """
+                        flow.showNext($1,$2)
+                                """
+        'Framer: flow.showPrevious($1)':
+                'prefix': 'flow.showPrevious($1)'
+                'body': """
+                        flow.showPrevious($1)
+                                """
+        'Framer: flow.showOverlayCenter($1,$2)':
+                'prefix': 'flow.showOverlayCenter($1,$2)'
+                'body': """
+                        flow.showOverlayCenter($1,$2)
+                                """
+        'Framer: flow.showOverlayTop($1,$2)':
+                'prefix': 'flow.showOverlayTop($1,$2)'
+                'body': """
+                        flow.showOverlayTop($1,$2)
+                                """
+        'Framer: flow.showOverlayRight($1,$2)':
+                'prefix': 'flow.showOverlayRight($1,$2)'
+                'body': """
+                        flow.showOverlayRight($1,$2)
+                                """
+        'Framer: flow.showOverlayBottom($1,$2)':
+                'prefix': 'flow.showOverlayBottom($1,$2)'
+                'body': """
+                        flow.showOverlayBottom($1,$2)
+                                """
+        'Framer: flow.showOverlayLeft($1,$2)':
+                'prefix': 'flow.showOverlayLeft($1,$2)'
+                'body': """
+                        flow.showOverlayLeft($1,$2)
+                                """
+        'Framer: flow.transition($1,$2,$3)':
+                'prefix': 'flow.transition($1,$2,$3)'
+                'body': """
+                        flow.transition($1,$2,$3)
+                                """
+        'Framer: flow.header':
+                'prefix': 'flow.header'
+                'body': """
+                        flow.header
+                                """
+        'Framer: flow.footer':
+                'prefix': 'flow.footer'
+                'body': """
+                        flow.footer
+                                """
+        'Framer: new Layer':
+                'prefix': 'new Layer'
+                'body': """
+                        new Layer
+                                """
+        'Framer: layer.id':
+                'prefix': 'layer.id'
+                'body': """
+                        layer.id
+                                """
+        'Framer: layer.name':
+                'prefix': 'layer.name'
+                'body': """
+                        layer.name
+                                """
+        'Framer: layer.x':
+                'prefix': 'layer.x'
+                'body': """
+                        layer.x
+                                """
+        'Framer: layer.y':
+                'prefix': 'layer.y'
+                'body': """
+                        layer.y
+                                """
+        'Framer: layer.z':
+                'prefix': 'layer.z'
+                'body': """
+                        layer.z
+                                """
+        'Framer: layer.width':
+                'prefix': 'layer.width'
+                'body': """
+                        layer.width
+                                """
+        'Framer: layer.height':
+                'prefix': 'layer.height'
+                'body': """
+                        layer.height
+                                """
+        'Framer: layer.minX':
+                'prefix': 'layer.minX'
+                'body': """
+                        layer.minX
+                                """
+        'Framer: layer.midX':
+                'prefix': 'layer.midX'
+                'body': """
+                        layer.midX
+                                """
+        'Framer: layer.maxX':
+                'prefix': 'layer.maxX'
+                'body': """
+                        layer.maxX
+                                """
+        'Framer: layer.minY':
+                'prefix': 'layer.minY'
+                'body': """
+                        layer.minY
+                                """
+        'Framer: layer.midY':
+                'prefix': 'layer.midY'
+                'body': """
+                        layer.midY
+                                """
+        'Framer: layer.maxY':
+                'prefix': 'layer.maxY'
+                'body': """
+                        layer.maxY
+                                """
+        'Framer: layer.point':
+                'prefix': 'layer.point'
+                'body': """
+                        layer.point
+                                """
+        'Framer: layer.size':
+                'prefix': 'layer.size'
+                'body': """
+                        layer.size
+                                """
+        'Framer: layer.frame':
+                'prefix': 'layer.frame'
+                'body': """
+                        layer.frame
+                                """
+        'Framer: layer.props':
+                'prefix': 'layer.props'
+                'body': """
+                        layer.props
+                                """
+        'Framer: layer.center()':
+                'prefix': 'layer.center()'
+                'body': """
+                        layer.center()
+                                """
+        'Framer: layer.centerX($1)':
+                'prefix': 'layer.centerX($1)'
+                'body': """
+                        layer.centerX($1)
+                                """
+        'Framer: layer.centerY($1)':
+                'prefix': 'layer.centerY($1)'
+                'body': """
+                        layer.centerY($1)
+                                """
+        'Framer: layer.pixelAlign()':
+                'prefix': 'layer.pixelAlign()'
+                'body': """
+                        layer.pixelAlign()
+                                """
+        'Framer: layer.screenFrame':
+                'prefix': 'layer.screenFrame'
+                'body': """
+                        layer.screenFrame
+                                """
+        'Framer: layer.contentFrame()':
+                'prefix': 'layer.contentFrame()'
+                'body': """
+                        layer.contentFrame()
+                                """
+        'Framer: layer.centerFrame()':
+                'prefix': 'layer.centerFrame()'
+                'body': """
+                        layer.centerFrame()
+                                """
+        'Framer: layer.backgroundColor':
+                'prefix': 'layer.backgroundColor'
+                'body': """
+                        layer.backgroundColor
+                                """
+        'Framer: layer.color':
+                'prefix': 'layer.color'
+                'body': """
+                        layer.color
+                                """
+        'Framer: layer.image':
+                'prefix': 'layer.image'
+                'body': """
+                        layer.image
+                                """
+        'Framer: layer.visible':
+                'prefix': 'layer.visible'
+                'body': """
+                        layer.visible
+                                """
+        'Framer: layer.opacity':
+                'prefix': 'layer.opacity'
+                'body': """
+                        layer.opacity
+                                """
+        'Framer: layer.clip':
+                'prefix': 'layer.clip'
+                'body': """
+                        layer.clip
+                                """
+        'Framer: layer.ignoreEvents':
+                'prefix': 'layer.ignoreEvents'
+                'body': """
+                        layer.ignoreEvents
+                                """
+        'Framer: layer.originX':
+                'prefix': 'layer.originX'
+                'body': """
+                        layer.originX
+                                """
+        'Framer: layer.originY':
+                'prefix': 'layer.originY'
+                'body': """
+                        layer.originY
+                                """
+        'Framer: layer.originZ':
+                'prefix': 'layer.originZ'
+                'body': """
+                        layer.originZ
+                                """
+        'Framer: layer.perspective':
+                'prefix': 'layer.perspective'
+                'body': """
+                        layer.perspective
+                                """
+        'Framer: layer.flat':
+                'prefix': 'layer.flat'
+                'body': """
+                        layer.flat
+                                """
+        'Framer: layer.backfaceVisible':
+                'prefix': 'layer.backfaceVisible'
+                'body': """
+                        layer.backfaceVisible
+                                """
+        'Framer: layer.rotation':
+                'prefix': 'layer.rotation'
+                'body': """
+                        layer.rotation
+                                """
+        'Framer: layer.rotationX':
+                'prefix': 'layer.rotationX'
+                'body': """
+                        layer.rotationX
+                                """
+        'Framer: layer.rotationY':
+                'prefix': 'layer.rotationY'
+                'body': """
+                        layer.rotationY
+                                """
+        'Framer: layer.rotationZ':
+                'prefix': 'layer.rotationZ'
+                'body': """
+                        layer.rotationZ
+                                """
+        'Framer: layer.scale':
+                'prefix': 'layer.scale'
+                'body': """
+                        layer.scale
+                                """
+        'Framer: layer.scaleX':
+                'prefix': 'layer.scaleX'
+                'body': """
+                        layer.scaleX
+                                """
+        'Framer: layer.scaleY':
+                'prefix': 'layer.scaleY'
+                'body': """
+                        layer.scaleY
+                                """
+        'Framer: layer.parent':
+                'prefix': 'layer.parent'
+                'body': """
+                        layer.parent
+                                """
+        'Framer: layer.children':
+                'prefix': 'layer.children'
+                'body': """
+                        layer.children
+                                """
+        'Framer: layer.childrenWithName($1)':
+                'prefix': 'layer.childrenWithName($1)'
+                'body': """
+                        layer.childrenWithName($1)
+                                """
+        'Framer: layer.siblings':
+                'prefix': 'layer.siblings'
+                'body': """
+                        layer.siblings
+                                """
+        'Framer: layer.siblingsWithName($1)':
+                'prefix': 'layer.siblingsWithName($1)'
+                'body': """
+                        layer.siblingsWithName($1)
+                                """
+        'Framer: layer.descendants':
+                'prefix': 'layer.descendants'
+                'body': """
+                        layer.descendants
+                                """
+        'Framer: layer.ancestors($1)':
+                'prefix': 'layer.ancestors($1)'
+                'body': """
+                        layer.ancestors($1)
+                                """
+        'Framer: layer.addChild($1)':
+                'prefix': 'layer.addChild($1)'
+                'body': """
+                        layer.addChild($1)
+                                """
+        'Framer: layer.removeChild($1)':
+                'prefix': 'layer.removeChild($1)'
+                'body': """
+                        layer.removeChild($1)
+                                """
+        'Framer: layer.index':
+                'prefix': 'layer.index'
+                'body': """
+                        layer.index
+                                """
+        'Framer: layer.placeBefore($1)':
+                'prefix': 'layer.placeBefore($1)'
+                'body': """
+                        layer.placeBefore($1)
+                                """
+        'Framer: layer.placeBehind($1)':
+                'prefix': 'layer.placeBehind($1)'
+                'body': """
+                        layer.placeBehind($1)
+                                """
+        'Framer: layer.bringToFront()':
+                'prefix': 'layer.bringToFront()'
+                'body': """
+                        layer.bringToFront()
+                                """
+        'Framer: layer.sendToBack()':
+                'prefix': 'layer.sendToBack()'
+                'body': """
+                        layer.sendToBack()
+                                """
+        'Framer: layer.html':
+                'prefix': 'layer.html'
+                'body': """
+                        layer.html
+                                """
+        'Framer: layer.style':
+                'prefix': 'layer.style'
+                'body': """
+                        layer.style
+                                """
+        'Framer: layer.computedStyle()':
+                'prefix': 'layer.computedStyle()'
+                'body': """
+                        layer.computedStyle()
+                                """
+        'Framer: layer.classList':
+                'prefix': 'layer.classList'
+                'body': """
+                        layer.classList
+                                """
+        'Framer: layer.destroy()':
+                'prefix': 'layer.destroy()'
+                'body': """
+                        layer.destroy()
+                                """
+        'Framer: layer.copy()':
+                'prefix': 'layer.copy()'
+                'body': """
+                        layer.copy()
+                                """
+        'Framer: layer.copySingle()':
+                'prefix': 'layer.copySingle()'
+                'body': """
+                        layer.copySingle()
+                                """
+        'Framer: layer.blur':
+                'prefix': 'layer.blur'
+                'body': """
+                        layer.blur
+                                """
+        'Framer: layer.brightness':
+                'prefix': 'layer.brightness'
+                'body': """
+                        layer.brightness
+                                """
+        'Framer: layer.saturate':
+                'prefix': 'layer.saturate'
+                'body': """
+                        layer.saturate
+                                """
+        'Framer: layer.hueRotate':
+                'prefix': 'layer.hueRotate'
+                'body': """
+                        layer.hueRotate
+                                """
+        'Framer: layer.contrast':
+                'prefix': 'layer.contrast'
+                'body': """
+                        layer.contrast
+                                """
+        'Framer: layer.invert':
+                'prefix': 'layer.invert'
+                'body': """
+                        layer.invert
+                                """
+        'Framer: layer.grayscale':
+                'prefix': 'layer.grayscale'
+                'body': """
+                        layer.grayscale
+                                """
+        'Framer: layer.sepia':
+                'prefix': 'layer.sepia'
+                'body': """
+                        layer.sepia
+                                """
+        'Framer: layer.shadowX':
+                'prefix': 'layer.shadowX'
+                'body': """
+                        layer.shadowX
+                                """
+        'Framer: layer.shadowY':
+                'prefix': 'layer.shadowY'
+                'body': """
+                        layer.shadowY
+                                """
+        'Framer: layer.shadowBlur':
+                'prefix': 'layer.shadowBlur'
+                'body': """
+                        layer.shadowBlur
+                                """
+        'Framer: layer.shadowSpread':
+                'prefix': 'layer.shadowSpread'
+                'body': """
+                        layer.shadowSpread
+                                """
+        'Framer: layer.shadowColor':
+                'prefix': 'layer.shadowColor'
+                'body': """
+                        layer.shadowColor
+                                """
+        'Framer: layer.borderRadius':
+                'prefix': 'layer.borderRadius'
+                'body': """
+                        layer.borderRadius
+                                """
+        'Framer: layer.borderColor':
+                'prefix': 'layer.borderColor'
+                'body': """
+                        layer.borderColor
+                                """
+        'Framer: layer.borderWidth':
+                'prefix': 'layer.borderWidth'
+                'body': """
+                        layer.borderWidth
+                                """
+        'Framer: layer.animate($1)':
+                'prefix': 'layer.animate($1)'
+                'body': """
+                        layer.animate($1)
+                                """
+        'Framer: layer.animationOptions':
+                'prefix': 'layer.animationOptions'
+                'body': """
+                        layer.animationOptions
+                                """
+        'Framer: curve':
+                'prefix': 'curve'
+                'body': """
+                        curve
+                                """
+        'Framer: curveOptions':
+                'prefix': 'curveOptions'
+                'body': """
+                        curveOptions
+                                """
+        'Framer: time':
+                'prefix': 'time'
+                'body': """
+                        time
+                                """
+        'Framer: delay':
+                'prefix': 'delay'
+                'body': """
+                        delay
+                                """
+        'Framer: repeat':
+                'prefix': 'repeat'
+                'body': """
+                        repeat
+                                """
+        'Framer: colorModel':
+                'prefix': 'colorModel'
+                'body': """
+                        colorModel
+                                """
+        'Framer: instant':
+                'prefix': 'instant'
+                'body': """
+                        instant
+                                """
+        'Framer: layer.animations()':
+                'prefix': 'layer.animations()'
+                'body': """
+                        layer.animations()
+                                """
+        'Framer: layer.isAnimating':
+                'prefix': 'layer.isAnimating'
+                'body': """
+                        layer.isAnimating
+                                """
+        'Framer: layer.animateStop()':
+                'prefix': 'layer.animateStop()'
+                'body': """
+                        layer.animateStop()
+                                """
+        'Framer: layer.stateSwitch($1)':
+                'prefix': 'layer.stateSwitch($1)'
+                'body': """
+                        layer.stateSwitch($1)
+                                """
+        'Framer: layer.stateCycle($1,$2)':
+                'prefix': 'layer.stateCycle($1,$2)'
+                'body': """
+                        layer.stateCycle($1,$2)
+                                """
+        'Framer: layer.stateNames':
+                'prefix': 'layer.stateNames'
+                'body': """
+                        layer.stateNames
+                                """
+        'Framer: layer.convertPointToCanvas($1)':
+                'prefix': 'layer.convertPointToCanvas($1)'
+                'body': """
+                        layer.convertPointToCanvas($1)
+                                """
+        'Framer: layer.convertPointToScreen($1)':
+                'prefix': 'layer.convertPointToScreen($1)'
+                'body': """
+                        layer.convertPointToScreen($1)
+                                """
+        'Framer: layer.convertPointToLayer($1,$2)':
+                'prefix': 'layer.convertPointToLayer($1,$2)'
+                'body': """
+                        layer.convertPointToLayer($1,$2)
+                                """
+        'Framer: layer.on($1,$2)':
+                'prefix': 'layer.on($1,$2)'
+                'body': """
+                        layer.on($1,$2)
+                                """
+        'Framer: layer.off($1,$2)':
+                'prefix': 'layer.off($1,$2)'
+                'body': """
+                        layer.off($1,$2)
+                                """
+        'Framer: new MIDIComponent':
+                'prefix': 'new MIDIComponent'
+                'body': """
+                        new MIDIComponent
+                                """
+        'Framer: min':
+                'prefix': 'min'
+                'body': """
+                        min
+                                """
+        'Framer: max':
+                'prefix': 'max'
+                'body': """
+                        max
+                                """
+        'Framer: control':
+                'prefix': 'control'
+                'body': """
+                        control
+                                """
+        'Framer: channel':
+                'prefix': 'channel'
+                'body': """
+                        channel
+                                """
+        'Framer: source':
+                'prefix': 'source'
+                'body': """
+                        source
+                                """
+        'Framer: onValueChange()':
+                'prefix': 'onValueChange()'
+                'body': """
+                        onValueChange()
+                                """
+        'Framer: new PageComponent':
+                'prefix': 'new PageComponent'
+                'body': """
+                        new PageComponent
+                                """
+        'Framer: page.originX':
+                'prefix': 'page.originX'
+                'body': """
+                        page.originX
+                                """
+        'Framer: page.originY':
+                'prefix': 'page.originY'
+                'body': """
+                        page.originY
+                                """
+        'Framer: page.velocityThreshold':
+                'prefix': 'page.velocityThreshold'
+                'body': """
+                        page.velocityThreshold
+                                """
+        'Framer: page.animationOptions':
+                'prefix': 'page.animationOptions'
+                'body': """
+                        page.animationOptions
+                                """
+        'Framer: page.currentPage':
+                'prefix': 'page.currentPage'
+                'body': """
+                        page.currentPage
+                                """
+        'Framer: page.closestPage':
+                'prefix': 'page.closestPage'
+                'body': """
+                        page.closestPage
+                                """
+        'Framer: page.nextPage($1,$2)':
+                'prefix': 'page.nextPage($1,$2)'
+                'body': """
+                        page.nextPage($1,$2)
+                                """
+        'Framer: page.previousPage':
+                'prefix': 'page.previousPage'
+                'body': """
+                        page.previousPage
+                                """
+        'Framer: page.snapToPage($1,$2,$3)':
+                'prefix': 'page.snapToPage($1,$2,$3)'
+                'body': """
+                        page.snapToPage($1,$2,$3)
+                                """
+        'Framer: page.snapToNextPage($1,$2,$3)':
+                'prefix': 'page.snapToNextPage($1,$2,$3)'
+                'body': """
+                        page.snapToNextPage($1,$2,$3)
+                                """
+        'Framer: page.snapToPreviousPage()':
+                'prefix': 'page.snapToPreviousPage()'
+                'body': """
+                        page.snapToPreviousPage()
+                                """
+        'Framer: page.addPage($1)':
+                'prefix': 'page.addPage($1)'
+                'body': """
+                        page.addPage($1)
+                                """
+        'Framer: page.horizontalPageIndex($1)':
+                'prefix': 'page.horizontalPageIndex($1)'
+                'body': """
+                        page.horizontalPageIndex($1)
+                                """
+        'Framer: page.verticalPageIndex($1)':
+                'prefix': 'page.verticalPageIndex($1)'
+                'body': """
+                        page.verticalPageIndex($1)
+                                """
+        'Framer: pinchable.enabled':
+                'prefix': 'pinchable.enabled'
+                'body': """
+                        pinchable.enabled
+                                """
+        'Framer: pinchable.threshold':
+                'prefix': 'pinchable.threshold'
+                'body': """
+                        pinchable.threshold
+                                """
+        'Framer: pinchable.centerOrigin':
+                'prefix': 'pinchable.centerOrigin'
+                'body': """
+                        pinchable.centerOrigin
+                                """
+        'Framer: pinchable.scale':
+                'prefix': 'pinchable.scale'
+                'body': """
+                        pinchable.scale
+                                """
+        'Framer: pinchable.scaleIncrements':
+                'prefix': 'pinchable.scaleIncrements'
+                'body': """
+                        pinchable.scaleIncrements
+                                """
+        'Framer: pinchable.minScale':
+                'prefix': 'pinchable.minScale'
+                'body': """
+                        pinchable.minScale
+                                """
+        'Framer: pinchable.maxScale':
+                'prefix': 'pinchable.maxScale'
+                'body': """
+                        pinchable.maxScale
+                                """
+        'Framer: pinchable.scaleFactor':
+                'prefix': 'pinchable.scaleFactor'
+                'body': """
+                        pinchable.scaleFactor
+                                """
+        'Framer: pinchable.rotate':
+                'prefix': 'pinchable.rotate'
+                'body': """
+                        pinchable.rotate
+                                """
+        'Framer: pinchable.rotateIncrements':
+                'prefix': 'pinchable.rotateIncrements'
+                'body': """
+                        pinchable.rotateIncrements
+                                """
+        'Framer: pinchable.rotateFactor':
+                'prefix': 'pinchable.rotateFactor'
+                'body': """
+                        pinchable.rotateFactor
+                                """
+        'Framer: Screen.backgroundColor':
+                'prefix': 'Screen.backgroundColor'
+                'body': """
+                        Screen.backgroundColor
+                                """
+        'Framer: Screen.width':
+                'prefix': 'Screen.width'
+                'body': """
+                        Screen.width
+                                """
+        'Framer: Screen.height':
+                'prefix': 'Screen.height'
+                'body': """
+                        Screen.height
+                                """
+        'Framer: Screen.size':
+                'prefix': 'Screen.size'
+                'body': """
+                        Screen.size
+                                """
+        'Framer: Screen.frame':
+                'prefix': 'Screen.frame'
+                'body': """
+                        Screen.frame
+                                """
+        'Framer: Screen.perspective':
+                'prefix': 'Screen.perspective'
+                'body': """
+                        Screen.perspective
+                                """
+        'Framer: Screen.perspectiveOriginX':
+                'prefix': 'Screen.perspectiveOriginX'
+                'body': """
+                        Screen.perspectiveOriginX
+                                """
+        'Framer: Screen.perspectiveOriginY':
+                'prefix': 'Screen.perspectiveOriginY'
+                'body': """
+                        Screen.perspectiveOriginY
+                                """
+        'Framer: Screen.convertPointToCanvas($1)':
+                'prefix': 'Screen.convertPointToCanvas($1)'
+                'body': """
+                        Screen.convertPointToCanvas($1)
+                                """
+        'Framer: Screen.convertPointToLayer($1,$2)':
+                'prefix': 'Screen.convertPointToLayer($1,$2)'
+                'body': """
+                        Screen.convertPointToLayer($1,$2)
+                                """
+        'Framer: new ScrollComponent':
+                'prefix': 'new ScrollComponent'
+                'body': """
+                        new ScrollComponent
+                                """
+        'Framer: scroll.content':
+                'prefix': 'scroll.content'
+                'body': """
+                        scroll.content
+                                """
+        'Framer: scroll.contentInset':
+                'prefix': 'scroll.contentInset'
+                'body': """
+                        scroll.contentInset
+                                """
+        'Framer: scroll.speedX':
+                'prefix': 'scroll.speedX'
+                'body': """
+                        scroll.speedX
+                                """
+        'Framer: scroll.speedY':
+                'prefix': 'scroll.speedY'
+                'body': """
+                        scroll.speedY
+                                """
+        'Framer: scroll.scroll':
+                'prefix': 'scroll.scroll'
+                'body': """
+                        scroll.scroll
+                                """
+        'Framer: scroll.scrollHorizontal':
+                'prefix': 'scroll.scrollHorizontal'
+                'body': """
+                        scroll.scrollHorizontal
+                                """
+        'Framer: scroll.scrollVertical':
+                'prefix': 'scroll.scrollVertical'
+                'body': """
+                        scroll.scrollVertical
+                                """
+        'Framer: scroll.scrollX':
+                'prefix': 'scroll.scrollX'
+                'body': """
+                        scroll.scrollX
+                                """
+        'Framer: scroll.scrollY':
+                'prefix': 'scroll.scrollY'
+                'body': """
+                        scroll.scrollY
+                                """
+        'Framer: scroll.scrollPoint':
+                'prefix': 'scroll.scrollPoint'
+                'body': """
+                        scroll.scrollPoint
+                                """
+        'Framer: scroll.scrollFrame':
+                'prefix': 'scroll.scrollFrame'
+                'body': """
+                        scroll.scrollFrame
+                                """
+        'Framer: scroll.velocity':
+                'prefix': 'scroll.velocity'
+                'body': """
+                        scroll.velocity
+                                """
+        'Framer: scroll.direction':
+                'prefix': 'scroll.direction'
+                'body': """
+                        scroll.direction
+                                """
+        'Framer: scroll.directionLock':
+                'prefix': 'scroll.directionLock'
+                'body': """
+                        scroll.directionLock
+                                """
+        'Framer: scroll.directionLockThreshold':
+                'prefix': 'scroll.directionLockThreshold'
+                'body': """
+                        scroll.directionLockThreshold
+                                """
+        'Framer: scroll.angle':
+                'prefix': 'scroll.angle'
+                'body': """
+                        scroll.angle
+                                """
+        'Framer: scroll.isDragging':
+                'prefix': 'scroll.isDragging'
+                'body': """
+                        scroll.isDragging
+                                """
+        'Framer: scroll.isMoving':
+                'prefix': 'scroll.isMoving'
+                'body': """
+                        scroll.isMoving
+                                """
+        'Framer: scroll.closestContentLayer($1,$2)':
+                'prefix': 'scroll.closestContentLayer($1,$2)'
+                'body': """
+                        scroll.closestContentLayer($1,$2)
+                                """
+        'Framer: scroll.closestContentLayerForScrollPoint($1,$2)':
+                'prefix': 'scroll.closestContentLayerForScrollPoint($1,$2)'
+                'body': """
+                        scroll.closestContentLayerForScrollPoint($1,$2)
+                                """
+        'Framer: scroll.scrollToPoint($1,$2,$3)':
+                'prefix': 'scroll.scrollToPoint($1,$2,$3)'
+                'body': """
+                        scroll.scrollToPoint($1,$2,$3)
+                                """
+        'Framer: scroll.scrollToLayer(layer,originX,originY,animate,animationOptions)':
+                'prefix': 'scroll.scrollToLayer(layer,originX,originY,animate,animationOptions)'
+                'body': """
+                        scroll.scrollToLayer(layer,originX,originY,animate,animationOptions)
+                                """
+        'Framer: scroll.scrollToClosestLayer($1,$2)':
+                'prefix': 'scroll.scrollToClosestLayer($1,$2)'
+                'body': """
+                        scroll.scrollToClosestLayer($1,$2)
+                                """
+        'Framer: scroll.mouseWheelEnabled':
+                'prefix': 'scroll.mouseWheelEnabled'
+                'body': """
+                        scroll.mouseWheelEnabled
+                                """
+        'Framer: scroll.wrap($1)':
+                'prefix': 'scroll.wrap($1)'
+                'body': """
+                        scroll.wrap($1)
+                                """
+        'Framer: scroll.updateContent()':
+                'prefix': 'scroll.updateContent()'
+                'body': """
+                        scroll.updateContent()
+                                """
+        'Framer: scroll.copy()':
+                'prefix': 'scroll.copy()'
+                'body': """
+                        scroll.copy()
+                                """
+        'Framer: scroll.propagateEvents':
+                'prefix': 'scroll.propagateEvents'
+                'body': """
+                        scroll.propagateEvents
+                                """
+        'Framer: new SliderComponent':
+                'prefix': 'new SliderComponent'
+                'body': """
+                        new SliderComponent
+                                """
+        'Framer: slider.knob':
+                'prefix': 'slider.knob'
+                'body': """
+                        slider.knob
+                                """
+        'Framer: slider.knobSize':
+                'prefix': 'slider.knobSize'
+                'body': """
+                        slider.knobSize
+                                """
+        'Framer: slider.fill':
+                'prefix': 'slider.fill'
+                'body': """
+                        slider.fill
+                                """
+        'Framer: slider.min':
+                'prefix': 'slider.min'
+                'body': """
+                        slider.min
+                                """
+        'Framer: slider.max':
+                'prefix': 'slider.max'
+                'body': """
+                        slider.max
+                                """
+        'Framer: slider.value':
+                'prefix': 'slider.value'
+                'body': """
+                        slider.value
+                                """
+        'Framer: slider.pointForValue($1)':
+                'prefix': 'slider.pointForValue($1)'
+                'body': """
+                        slider.pointForValue($1)
+                                """
+        'Framer: slider.valueForPoint($1)':
+                'prefix': 'slider.valueForPoint($1)'
+                'body': """
+                        slider.valueForPoint($1)
+                                """
+        'Framer: slider.animateToValue($1,$2)':
+                'prefix': 'slider.animateToValue($1,$2)'
+                'body': """
+                        slider.animateToValue($1,$2)
+                                """
+        'Framer: default':
+                'prefix': 'default'
+                'body': """
+                        default
+                                """
+        'Framer: states.current':
+                'prefix': 'states.current'
+                'body': """
+                        states.current
+                                """
+        'Framer: states.current':
+                'prefix': 'states.current'
+                'body': """
+                        states.current
+                                """
+        'Framer: states.previous':
+                'prefix': 'states.previous'
+                'body': """
+                        states.previous
+                                """
+        'Framer: Utils.modulate(value,[a,a],[b,b],limit)':
+                'prefix': 'Utils.modulate(value,[a,a],[b,b],limit)'
+                'body': """
+                        Utils.modulate(value,[a,a],[b,b],limit)
+                                """
+        'Framer: Utils.cycle($1)':
+                'prefix': 'Utils.cycle($1)'
+                'body': """
+                        Utils.cycle($1)
+                                """
+        'Framer: Utils.labelLayer($1,$2)':
+                'prefix': 'Utils.labelLayer($1,$2)'
+                'body': """
+                        Utils.labelLayer($1,$2)
+                                """
+        'Framer: Utils.round(value,decimals,increments,min,max)':
+                'prefix': 'Utils.round(value,decimals,increments,min,max)'
+                'body': """
+                        Utils.round(value,decimals,increments,min,max)
+                                """
+        'Framer: Utils.randomChoice($1)':
+                'prefix': 'Utils.randomChoice($1)'
+                'body': """
+                        Utils.randomChoice($1)
+                                """
+        'Framer: Utils.randomColor($1)':
+                'prefix': 'Utils.randomColor($1)'
+                'body': """
+                        Utils.randomColor($1)
+                                """
+        'Framer: Utils.randomImage($1)':
+                'prefix': 'Utils.randomImage($1)'
+                'body': """
+                        Utils.randomImage($1)
+                                """
+        'Framer: Utils.randomNumber($1,$2)':
+                'prefix': 'Utils.randomNumber($1,$2)'
+                'body': """
+                        Utils.randomNumber($1,$2)
+                                """
+        'Framer: Utils.delay($1,$2)':
+                'prefix': 'Utils.delay($1,$2)'
+                'body': """
+                        Utils.delay($1,$2)
+                                """
+        'Framer: Utils.frameInset($1,$2)':
+                'prefix': 'Utils.frameInset($1,$2)'
+                'body': """
+                        Utils.frameInset($1,$2)
+                                """
+        'Framer: Utils.interval($1,$2)':
+                'prefix': 'Utils.interval($1,$2)'
+                'body': """
+                        Utils.interval($1,$2)
+                                """
+        'Framer: Utils.debounce($1,$2)':
+                'prefix': 'Utils.debounce($1,$2)'
+                'body': """
+                        Utils.debounce($1,$2)
+                                """
+        'Framer: Utils.insertCSS($1)':
+                'prefix': 'Utils.insertCSS($1)'
+                'body': """
+                        Utils.insertCSS($1)
+                                """
+        'Framer: Utils.throttle($1,$2)':
+                'prefix': 'Utils.throttle($1,$2)'
+                'body': """
+                        Utils.throttle($1,$2)
+                                """
+        'Framer: Utils.isWebKit()':
+                'prefix': 'Utils.isWebKit()'
+                'body': """
+                        Utils.isWebKit()
+                                """
+        'Framer: Utils.isChrome()':
+                'prefix': 'Utils.isChrome()'
+                'body': """
+                        Utils.isChrome()
+                                """
+        'Framer: Utils.isSafari()':
+                'prefix': 'Utils.isSafari()'
+                'body': """
+                        Utils.isSafari()
+                                """
+        'Framer: Utils.isTouch()':
+                'prefix': 'Utils.isTouch()'
+                'body': """
+                        Utils.isTouch()
+                                """
+        'Framer: Utils.isDesktop()':
+                'prefix': 'Utils.isDesktop()'
+                'body': """
+                        Utils.isDesktop()
+                                """
+        'Framer: Utils.isPhone()':
+                'prefix': 'Utils.isPhone()'
+                'body': """
+                        Utils.isPhone()
+                                """
+        'Framer: Utils.isTablet()':
+                'prefix': 'Utils.isTablet()'
+                'body': """
+                        Utils.isTablet()
+                                """
+        'Framer: Utils.isMobile()':
+                'prefix': 'Utils.isMobile()'
+                'body': """
+                        Utils.isMobile()
+                                """
+        'Framer: new VideoLayer':
+                'prefix': 'new VideoLayer'
+                'body': """
+                        new VideoLayer
+                                """
+        'Framer: video':
+                'prefix': 'video'
+                'body': """
+                        video
+                                """
+        'Framer: player':
+                'prefix': 'player'
+                'body': """
+                        player
+                                """
+        'Framer: explore($1)':
+                'prefix': 'explore($1)'
+                'body': """
+                        explore($1)
+                                """
