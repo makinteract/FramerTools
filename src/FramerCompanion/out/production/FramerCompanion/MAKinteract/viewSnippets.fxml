@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
@@ -15,6 +16,16 @@
                   <Label layoutX="41.0" layoutY="38.0" text="Category" />
                   <Label layoutX="235.0" layoutY="38.0" text="Name" />
                   <Label layoutX="485.0" layoutY="38.0" text="Snippet" />
+                  <Group>
+                     <children>
+                        <Label layoutX="622.0" layoutY="41.0" text="Stay front">
+                           <font>
+                              <Font size="9.0" />
+                           </font>
+                        </Label>
+                        <CheckBox fx:id="front" contentDisplay="TEXT_ONLY" layoutX="670.0" layoutY="37.0" mnemonicParsing="false" onAction="#toggleStayFront" prefHeight="18.0" prefWidth="15.0" />
+                     </children>
+                  </Group>
                </children>
             </Pane>
             <HBox prefHeight="312.0" prefWidth="700.0">

@@ -33,7 +33,6 @@ public class NewController
     @FXML
     private ChoiceBox deviceOption;
 
-
     private boolean templateInclued;
     private File path;
 

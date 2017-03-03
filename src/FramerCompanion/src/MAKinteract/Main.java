@@ -10,7 +10,7 @@ public class Main extends Application {
 
     public static String templatesFolder = "resources/templates/";
     public static String snippetsFolder= "resources/FramerSnippets/";
-
+    public static Stage mainStage;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -21,6 +21,7 @@ public class Main extends Application {
         primaryStage.setMinWidth(700);
         primaryStage.setMinHeight(275);
         primaryStage.setResizable(false);
+        mainStage= primaryStage;
         // primaryStage.setAlwaysOnTop(true);
     }
 
