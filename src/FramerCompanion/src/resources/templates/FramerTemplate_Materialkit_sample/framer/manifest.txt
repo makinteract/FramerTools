@@ -1,0 +1,69 @@
+app.coffee
+app.js
+framer/backups/backup-2016-05-25 08.06.46.coffee
+framer/backups/backup-2016-05-25 08.10.46.coffee
+framer/backups/backup-2016-05-25 08.12.46.coffee
+framer/backups/backup-2016-05-25 08.13.46.coffee
+framer/backups/backup-2016-05-25 08.14.46.coffee
+framer/backups/backup-2016-05-25 08.15.46.coffee
+framer/backups/backup-2016-05-25 08.16.46.coffee
+framer/backups/backup-2016-05-25 08.17.46.coffee
+framer/backups/backup-2016-05-25 08.18.46.coffee
+framer/backups/backup-2016-05-25 08.19.46.coffee
+framer/backups/backup-2016-05-25 08.25.46.coffee
+framer/backups/backup-2016-05-25 08.26.46.coffee
+framer/backups/backup-2016-05-25 08.30.46.coffee
+framer/backups/backup-2016-05-25 08.33.46.coffee
+framer/backups/backup-2016-05-25 08.34.46.coffee
+framer/backups/backup-2016-05-25 08.47.46.coffee
+framer/backups/backup-2016-05-25 08.48.46.coffee
+framer/backups/backup-2016-05-25 08.58.46.coffee
+framer/backups/backup-2016-05-25 08.59.46.coffee
+framer/backups/backup-2016-05-25 09.00.46.coffee
+framer/backups/backup-2016-05-25 09.01.46.coffee
+framer/coffee-script.js
+framer/config.json
+framer/framer.generated.js
+framer/framer.init.js
+framer/framer.js
+framer/framer.js.map
+framer/framer.modules (J’s iMac's conflicted copy 2016-05-24).js
+framer/framer.modules.js
+framer/images/background.png
+framer/images/cursor-active.png
+framer/images/cursor-active@2x.png
+framer/images/cursor.png
+framer/images/cursor@2x.png
+framer/images/icon-120.png
+framer/images/icon-152.png
+framer/images/icon-76.png
+framer/images/icon-arrow.png
+framer/images/icon-arrow@2x.png
+framer/images/icon-close.png
+framer/images/icon-close@2x.png
+framer/images/icon-framer.png
+framer/images/icon-framer@2x.png
+framer/images/icon-share.png
+framer/images/icon-share@2x.png
+framer/manifest.txt
+framer/mirror.css
+framer/style.css
+framer/version
+images/Favorites.svg
+index.html
+modules/demo_data.coffee
+modules/material-kit-app-bar.coffee
+modules/material-kit-banner.coffee
+modules/material-kit-button.coffee
+modules/material-kit-dialog.coffee
+modules/material-kit-icon.coffee
+modules/material-kit-layout.coffee
+modules/material-kit-library.coffee
+modules/material-kit-nav-bar.coffee
+modules/material-kit-snack-bar.coffee
+modules/material-kit-stack.coffee
+modules/material-kit-status-bar.coffee
+modules/material-kit-text.coffee
+modules/material-kit-utils.coffee
+modules/material-kit-video.coffee
+modules/material-kit.coffee

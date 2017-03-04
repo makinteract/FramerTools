@@ -43,7 +43,7 @@ public class NewController
         if (prjLocation != null) prjLocation.setEditable(false);
         imgFeedback.setVisible(false);
 
-        String [] options= {"Web", "iPhone", "Both"};
+        String [] options= {"Web", "iPhone", "Both", "iOS_kit", "Material_kit"};
         ObservableList<String> items = FXCollections.observableArrayList (options);
         deviceOption.setItems(items);
         deviceOption.getSelectionModel().selectFirst();
@@ -106,9 +106,15 @@ public class NewController
         }else if (option.equals("iPhone"))
         {
             sourceFolder= templateInclued ? "FramerTemplate_iPhone_sample" : "FramerTemplate_iPhone_empty";
-        }else{
+        }else if (option.equals("both")){
             // both
             sourceFolder= templateInclued ? "FramerTemplate_Both_sample" : "FramerTemplate_Both_empty";
+
+        }else if (option.equals("iOS_kit")){
+            sourceFolder= templateInclued ? "FramerTemplate_iOSkit_sample" : "FramerTemplate_iOSkit_empty";
+
+        }else if (option.equals("Material_kit")){
+            sourceFolder= templateInclued ? "FramerTemplate_Materialkit_sample" : "FramerTemplate_Materialkit_empty";
         }
 
         try {
